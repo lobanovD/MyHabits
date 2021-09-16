@@ -12,7 +12,11 @@
 		28C09CD926F2BC3500062B83 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C09CD826F2BC3500062B83 /* ViewController.swift */; };
 		28C09CDC26F2BC3500062B83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28C09CDA26F2BC3500062B83 /* Main.storyboard */; };
 		28C09CDE26F2BC3D00062B83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28C09CDD26F2BC3D00062B83 /* Assets.xcassets */; };
-		28C09CE126F2BC3D00062B83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28C09CDF26F2BC3D00062B83 /* LaunchScreen.storyboard */; };
+		28C09CE926F2BE6400062B83 /* HabitsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C09CE826F2BE6400062B83 /* HabitsStore.swift */; };
+		28C09CEB26F3459200062B83 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C09CEA26F3459200062B83 /* SplashViewController.swift */; };
+		28C09CED26F3470E00062B83 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C09CEC26F3470E00062B83 /* Extensions.swift */; };
+		28C09CEF26F3482100062B83 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C09CEE26F3482100062B83 /* Constants.swift */; };
+		28C09CF326F34DE100062B83 /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 28C09CF226F34DE100062B83 /* SF-Pro-Display-Semibold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,8 +26,12 @@
 		28C09CD826F2BC3500062B83 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		28C09CDB26F2BC3500062B83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		28C09CDD26F2BC3D00062B83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		28C09CE026F2BC3D00062B83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		28C09CE226F2BC3D00062B83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		28C09CE826F2BE6400062B83 /* HabitsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsStore.swift; sourceTree = "<group>"; };
+		28C09CEA26F3459200062B83 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		28C09CEC26F3470E00062B83 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		28C09CEE26F3482100062B83 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		28C09CF226F34DE100062B83 /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,10 +69,22 @@
 				28C09CD826F2BC3500062B83 /* ViewController.swift */,
 				28C09CDA26F2BC3500062B83 /* Main.storyboard */,
 				28C09CDD26F2BC3D00062B83 /* Assets.xcassets */,
-				28C09CDF26F2BC3D00062B83 /* LaunchScreen.storyboard */,
+				28C09CEA26F3459200062B83 /* SplashViewController.swift */,
 				28C09CE226F2BC3D00062B83 /* Info.plist */,
+				28C09CE826F2BE6400062B83 /* HabitsStore.swift */,
+				28C09CEC26F3470E00062B83 /* Extensions.swift */,
+				28C09CEE26F3482100062B83 /* Constants.swift */,
+				28C09CF026F34D8F00062B83 /* Fonts */,
 			);
 			path = MyHabits;
+			sourceTree = "<group>";
+		};
+		28C09CF026F34D8F00062B83 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				28C09CF226F34DE100062B83 /* SF-Pro-Display-Semibold.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,7 +144,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28C09CE126F2BC3D00062B83 /* LaunchScreen.storyboard in Resources */,
+				28C09CF326F34DE100062B83 /* SF-Pro-Display-Semibold.otf in Resources */,
 				28C09CDE26F2BC3D00062B83 /* Assets.xcassets in Resources */,
 				28C09CDC26F2BC3500062B83 /* Main.storyboard in Resources */,
 			);
@@ -137,9 +157,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28C09CE926F2BE6400062B83 /* HabitsStore.swift in Sources */,
+				28C09CED26F3470E00062B83 /* Extensions.swift in Sources */,
 				28C09CD926F2BC3500062B83 /* ViewController.swift in Sources */,
 				28C09CD526F2BC3500062B83 /* AppDelegate.swift in Sources */,
+				28C09CEF26F3482100062B83 /* Constants.swift in Sources */,
 				28C09CD726F2BC3500062B83 /* SceneDelegate.swift in Sources */,
+				28C09CEB26F3459200062B83 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,14 +176,6 @@
 				28C09CDB26F2BC3500062B83 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		28C09CDF26F2BC3D00062B83 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				28C09CE026F2BC3D00062B83 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

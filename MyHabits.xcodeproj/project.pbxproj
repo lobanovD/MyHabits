@@ -20,6 +20,7 @@
 		28C09CFE26F382BB00062B83 /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C09CFD26F382BB00062B83 /* TextStyles.swift */; };
 		28C09D0326F3930E00062B83 /* HabitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C09D0226F3930E00062B83 /* HabitsViewController.swift */; };
 		28C09D0526F3938F00062B83 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C09D0426F3938F00062B83 /* InfoViewController.swift */; };
+		28C09D0926F4BB2D00062B83 /* TempHabits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C09D0826F4BB2D00062B83 /* TempHabits.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		28C09CFD26F382BB00062B83 /* TextStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyles.swift; sourceTree = "<group>"; };
 		28C09D0226F3930E00062B83 /* HabitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewController.swift; sourceTree = "<group>"; };
 		28C09D0426F3938F00062B83 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		28C09D0826F4BB2D00062B83 /* TempHabits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempHabits.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,12 +73,13 @@
 			isa = PBXGroup;
 			children = (
 				28C09CDA26F2BC3500062B83 /* Main.storyboard */,
-				28C09D0426F3938F00062B83 /* InfoViewController.swift */,
 				28C09D0226F3930E00062B83 /* HabitsViewController.swift */,
+				28C09D0426F3938F00062B83 /* InfoViewController.swift */,
 				28C09CDD26F2BC3D00062B83 /* Assets.xcassets */,
-				28C09CEA26F3459200062B83 /* SplashScreen.swift */,
 				28C09CFF26F38CBC00062B83 /* SupportFiles */,
 				28C09CE226F2BC3D00062B83 /* Info.plist */,
+				28C09CEA26F3459200062B83 /* SplashScreen.swift */,
+				28C09D0826F4BB2D00062B83 /* TempHabits.swift */,
 			);
 			path = MyHabits;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 			files = (
 				28C09CE926F2BE6400062B83 /* HabitsStore.swift in Sources */,
 				28C09CFC26F37ED400062B83 /* ColorStyles.swift in Sources */,
+				28C09D0926F4BB2D00062B83 /* TempHabits.swift in Sources */,
 				28C09CED26F3470E00062B83 /* Extensions.swift in Sources */,
 				28C09CFE26F382BB00062B83 /* TextStyles.swift in Sources */,
 				28C09D0526F3938F00062B83 /* InfoViewController.swift in Sources */,

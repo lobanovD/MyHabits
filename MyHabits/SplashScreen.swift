@@ -27,22 +27,20 @@ class SplashScreen: UIViewController {
     private lazy var splashTitle: UILabel = {
         let splashTitle = UILabel()
         splashTitle.text = "MyHabits"
-        splashTitle.title3()
+        splashTitle.textTitle3()
         splashTitle.textColor = ColorStyles.purple
         splashTitle.toAutoLayout()
         return splashTitle
     }()
     
     private func setupConstraints() {
-        let constraints = [
+        NSLayoutConstraint.activate([
             splashTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            splashTitle.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: SplashVCConstants.titleBottom),
+            splashTitle.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: SplashVCConstants.titleBottomMargin),
             splashTitle.widthAnchor.constraint(equalToConstant: SplashVCConstants.titleWidth),
             splashTitle.heightAnchor.constraint(equalToConstant: SplashVCConstants.titleHeight)
-        ]
-        NSLayoutConstraint.activate(constraints)
+        ])
     }
-    
 }
 
 

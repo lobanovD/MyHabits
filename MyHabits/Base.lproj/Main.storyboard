@@ -23,9 +23,8 @@
                                     <constraint firstAttribute="width" constant="120" id="Mf7-an-Zp5"/>
                                 </constraints>
                             </imageView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Splash VC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9eT-rH-XEV">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Splash VC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9eT-rH-XEV">
                                 <rect key="frame" x="124" y="61" width="166" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -35,6 +34,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="BS1-Px-Wf3" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="IfN-DQ-Jz9"/>
+                            <constraint firstItem="9eT-rH-XEV" firstAttribute="centerX" secondItem="BS1-Px-Wf3" secondAttribute="centerX" id="KRu-dj-144"/>
+                            <constraint firstItem="9eT-rH-XEV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="17" id="si5-9Q-7Ub"/>
                             <constraint firstItem="BS1-Px-Wf3" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="uON-VK-ye9"/>
                         </constraints>
                     </view>
@@ -53,11 +54,11 @@
                         <viewLayoutGuide key="safeArea" id="02K-sY-avs"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Информация" image="info.circle.fill" catalog="system" id="vVM-cQ-i85"/>
+                    <navigationItem key="navigationItem" title="Информация" id="EuF-yl-Pjg"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gqN-Mv-Gxc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1580" y="592"/>
+            <point key="canvasLocation" x="2489.8550724637685" y="591.96428571428567"/>
         </scene>
         <!--Сегодня-->
         <scene sceneID="teS-2M-gvI">
@@ -67,7 +68,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="ZgC-IX-YKt"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <navigationItem key="navigationItem" title="Сегодня" id="TB2-sQ-8H6">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="BHD-sT-lUJ"/>
@@ -90,7 +91,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="Fsl-Q5-oBH" kind="relationship" relationship="viewControllers" id="6tU-Ea-ydR"/>
-                        <segue destination="0qU-nU-fAk" kind="relationship" relationship="viewControllers" id="xGf-F5-qvn"/>
+                        <segue destination="lSW-gP-CAi" kind="relationship" relationship="viewControllers" id="xGf-F5-qvn"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VRu-BQ-Y3J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -117,6 +118,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rj4-iN-be8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="669.56521739130437" y="-222.32142857142856"/>
+        </scene>
+        <!--Информация-->
+        <scene sceneID="dGN-uo-Rve">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lSW-gP-CAi" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Информация" image="info.circle.fill" catalog="system" id="vVM-cQ-i85"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="52j-B0-upA">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0qU-nU-fAk" kind="relationship" relationship="rootViewController" id="Y4r-e1-NKu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LfU-f0-Lbb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1579.7101449275362" y="591.96428571428567"/>
         </scene>
     </scenes>
     <resources>

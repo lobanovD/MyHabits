@@ -1,5 +1,5 @@
 //
-//  InfoViewController.swift
+//  InfoVC.swift
 //  MyHabits
 //
 //  Created by Dmitrii Lobanov on 16.09.2021.
@@ -7,12 +7,11 @@
 
 import UIKit
 
-class InfoViewController: UIViewController {
+class InfoVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        print(view.frame.width)
     }
 
     private lazy var infoScrollView: UIScrollView = {

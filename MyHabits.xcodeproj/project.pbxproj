@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		284AF5E826F7D5CC002AC041 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 284AF5E726F7D5CC002AC041 /* SF-Pro-Text-Regular.otf */; };
+		284AF5EA26F7D86F002AC041 /* AddNewHabitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284AF5E926F7D86F002AC041 /* AddNewHabitVC.swift */; };
 		28C09CD526F2BC3500062B83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C09CD426F2BC3500062B83 /* AppDelegate.swift */; };
 		28C09CD726F2BC3500062B83 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C09CD626F2BC3500062B83 /* SceneDelegate.swift */; };
 		28C09CDC26F2BC3500062B83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28C09CDA26F2BC3500062B83 /* Main.storyboard */; };
@@ -19,7 +20,7 @@
 		28C09CFC26F37ED400062B83 /* ColorStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C09CFB26F37ED400062B83 /* ColorStyles.swift */; };
 		28C09CFE26F382BB00062B83 /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C09CFD26F382BB00062B83 /* TextStyles.swift */; };
 		28C09D0326F3930E00062B83 /* HabitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C09D0226F3930E00062B83 /* HabitsViewController.swift */; };
-		28C09D0526F3938F00062B83 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C09D0426F3938F00062B83 /* InfoViewController.swift */; };
+		28C09D0526F3938F00062B83 /* InfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C09D0426F3938F00062B83 /* InfoVC.swift */; };
 		28C09D0926F4BB2D00062B83 /* TempHabits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C09D0826F4BB2D00062B83 /* TempHabits.swift */; };
 		28E588C226F553AB003CD78F /* SplashVCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E588C126F553AB003CD78F /* SplashVCConstants.swift */; };
 		28E588C426F553B8003CD78F /* InfoVCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E588C326F553B8003CD78F /* InfoVCConstants.swift */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		284AF5E726F7D5CC002AC041 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
+		284AF5E926F7D86F002AC041 /* AddNewHabitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewHabitVC.swift; sourceTree = "<group>"; };
 		28C09CD126F2BC3500062B83 /* MyHabits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyHabits.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28C09CD426F2BC3500062B83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28C09CD626F2BC3500062B83 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,7 +42,7 @@
 		28C09CFB26F37ED400062B83 /* ColorStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorStyles.swift; sourceTree = "<group>"; };
 		28C09CFD26F382BB00062B83 /* TextStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyles.swift; sourceTree = "<group>"; };
 		28C09D0226F3930E00062B83 /* HabitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewController.swift; sourceTree = "<group>"; };
-		28C09D0426F3938F00062B83 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		28C09D0426F3938F00062B83 /* InfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoVC.swift; sourceTree = "<group>"; };
 		28C09D0826F4BB2D00062B83 /* TempHabits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempHabits.swift; sourceTree = "<group>"; };
 		28E588C126F553AB003CD78F /* SplashVCConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVCConstants.swift; sourceTree = "<group>"; };
 		28E588C326F553B8003CD78F /* InfoVCConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoVCConstants.swift; sourceTree = "<group>"; };
@@ -123,8 +125,9 @@
 		28E588C626F55434003CD78F /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				284AF5E926F7D86F002AC041 /* AddNewHabitVC.swift */,
+				28C09D0426F3938F00062B83 /* InfoVC.swift */,
 				28C09D0226F3930E00062B83 /* HabitsViewController.swift */,
-				28C09D0426F3938F00062B83 /* InfoViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -206,11 +209,12 @@
 				28E588C226F553AB003CD78F /* SplashVCConstants.swift in Sources */,
 				28C09CED26F3470E00062B83 /* Extensions.swift in Sources */,
 				28C09CFE26F382BB00062B83 /* TextStyles.swift in Sources */,
-				28C09D0526F3938F00062B83 /* InfoViewController.swift in Sources */,
+				28C09D0526F3938F00062B83 /* InfoVC.swift in Sources */,
 				28C09D0326F3930E00062B83 /* HabitsViewController.swift in Sources */,
 				28C09CD526F2BC3500062B83 /* AppDelegate.swift in Sources */,
 				28C09CD726F2BC3500062B83 /* SceneDelegate.swift in Sources */,
 				28C09CEB26F3459200062B83 /* SplashScreen.swift in Sources */,
+				284AF5EA26F7D86F002AC041 /* AddNewHabitVC.swift in Sources */,
 				28E588C426F553B8003CD78F /* InfoVCConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

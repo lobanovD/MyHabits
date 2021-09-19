@@ -11,7 +11,7 @@ class SplashScreen: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+//        view.backgroundColor = .white
         view.addSubviews(splashTitle)
         setupConstraints()
         
@@ -29,7 +29,6 @@ class SplashScreen: UIViewController {
         splashTitle.text = "MyHabits"
         splashTitle.textTitle3(width: view.frame.width)
         splashTitle.textColor = ColorStyles.purple
-        splashTitle.toAutoLayout()
         return splashTitle
     }()
     
@@ -37,8 +36,6 @@ class SplashScreen: UIViewController {
         NSLayoutConstraint.activate([
             splashTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             splashTitle.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: SplashVCConstants.titleBottomMargin),
-//            splashTitle.widthAnchor.constraint(equalToConstant: SplashVCConstants.titleWidth),
-//            splashTitle.heightAnchor.constraint(equalToConstant: SplashVCConstants.titleHeight)
         ])
     }
 }

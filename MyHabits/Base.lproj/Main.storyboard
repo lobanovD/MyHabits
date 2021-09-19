@@ -47,7 +47,7 @@
         <!--Информация-->
         <scene sceneID="o6O-Sl-zcr">
             <objects>
-                <viewController storyboardIdentifier="InfoViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0qU-nU-fAk" customClass="InfoViewController" customModule="MyHabits" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InfoViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0qU-nU-fAk" customClass="InfoVC" customModule="MyHabits" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GTN-DD-OKs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -60,21 +60,41 @@
             </objects>
             <point key="canvasLocation" x="2489.8550724637685" y="591.96428571428567"/>
         </scene>
+        <!--Создать-->
+        <scene sceneID="QQq-A6-CQr">
+            <objects>
+                <viewController storyboardIdentifier="AddNewHabitVC" title="Создать" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VKH-uB-QX3" customClass="AddNewHabitVC" customModule="MyHabits" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WWB-hl-OMF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="fah-g3-wY7"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="pDO-0A-UYX"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hJI-f6-8lJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2233" y="-873"/>
+        </scene>
         <!--Сегодня-->
         <scene sceneID="teS-2M-gvI">
             <objects>
-                <viewController storyboardIdentifier="HabitsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xyC-0U-H8j" customClass="HabitsViewController" customModule="MyHabits" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HabitsViewController" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xyC-0U-H8j" customClass="HabitsViewController" customModule="MyHabits" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cIM-hQ-ei7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="ZgC-IX-YKt"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Сегодня" id="TB2-sQ-8H6">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="BHD-sT-lUJ"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="BHD-sT-lUJ">
+                            <connections>
+                                <action selector="addNewHabitAction:" destination="xyC-0U-H8j" id="EhW-XL-6EX"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addNavigationItem" destination="BHD-sT-lUJ" id="R5J-hZ-GKO"/>
+                        <outlet property="addNewHabitButton" destination="BHD-sT-lUJ" id="GtK-ai-WVh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lek-S5-tbx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -104,13 +124,16 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fsl-Q5-oBH" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Привычки" image="habitsTabBarIcon" id="aN5-3b-e2o"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="nyf-eg-kD5"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="mkB-nD-bHO">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Aul-wV-hJ3">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="xyC-0U-H8j" kind="relationship" relationship="rootViewController" id="yzW-W3-uzE"/>
                     </connections>

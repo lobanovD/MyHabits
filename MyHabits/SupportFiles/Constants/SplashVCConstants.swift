@@ -11,6 +11,6 @@ struct SplashVCConstants {
     static let imageWidth: CGFloat = 120
     static let imageHeight: CGFloat = 120
     static let titleBottomMargin: CGFloat = -42
-    static let titleWidth: CGFloat = 88
-    static let titleHeight: CGFloat = 24
+//    static let titleWidth: CGFloat = 88
+//    static let titleHeight: CGFloat = 24
 }

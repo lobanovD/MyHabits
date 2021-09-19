@@ -26,4 +26,11 @@ struct InfoVCConstants {
 
     static let infoTextEighth: String = "Источник: psychbook.ru"
 
+    static let infoStackViewSpacing: CGFloat = 12
+
+    static let topMargin: CGFloat = 22
+    static let leadingMargin: CGFloat = 16
+    static let trailingMargin: CGFloat = -16
+
+
 }

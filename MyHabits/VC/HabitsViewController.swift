@@ -14,36 +14,19 @@ class HabitsViewController: UIViewController {
     @IBAction func addNewHabitAction(_ sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let newHabitVC = storyboard.instantiateViewController(withIdentifier: "AddNewHabitVC") as! AddNewHabitVC
-//        newHabitVC.modalPresentationStyle = .fullScreen
-//        newHabitVC.modalTransitionStyle = .coverVertical
-////        navigationController?.pushViewController(newHabitVC, animated: true)
-//        navigationController?.present(newHabitVC, animated: true, completion: nil)
-
         let navController = UINavigationController(rootViewController: newHabitVC)
         navController.modalTransitionStyle = .coverVertical
         navController.modalPresentationStyle = .fullScreen
 
         self.navigationController?.present(navController, animated: true, completion: nil)
-        
-
-
-        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         addNewHabitButton.tintColor = ColorStyles.purple
-      
-
-
-        
-    
     }
 
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
 
-
 }
-
-

@@ -10,37 +10,59 @@ import UIKit
 extension UILabel {
     
     func textTitle3(width: CGFloat) {
-        self.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineHeightMultiple = 1.01
+        self.toAutoLayout()
+        self.numberOfLines = 0
         if width <= 428 {
             self.font = UIFont(name: "SFProDisplay-Semibold", size: 20)
         }
         else {
             self.font = UIFont(name: "SFProDisplay-Semibold", size: 40)
         }
-        self.toAutoLayout()
-        self.numberOfLines = 0
     }
 
     func textBody(width: CGFloat) {
-        self.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineHeightMultiple = 1.08
+        self.toAutoLayout()
+        self.numberOfLines = 0
         if width <= 428 {
             self.font = UIFont(name: "SFProText-Regular", size: 17)
         }
         else {
             self.font = UIFont(name: "SFProText-Regular", size: 24)
         }
-        self.toAutoLayout()
-        self.numberOfLines = 0
     }
 
-    
+    func footnote(width: CGFloat) {
+        self.font = UIFont(name: "SFProText-Semibold", size: 13)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineHeightMultiple = 1.16
+        self.toAutoLayout()
+        self.numberOfLines = 0
+        if width <= 428 {
+            self.font = UIFont(name: "SFProText-Semibold", size: 13)
+        }
+        else {
+            self.font = UIFont(name: "SFProText-Semibold", size: 26)
+        }
+    }
 
-    
-    
 }
 
 
+extension UITextField {
+    func headline(width: CGFloat) {
+        self.font = UIFont(name: "SFProText-Semibold", size: 17)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineHeightMultiple = 1.08
+        self.toAutoLayout()
+        if width <= 428 {
+            self.font = UIFont(name: "SFProText-Semibold", size: 17)
+        }
+        else {
+            self.font = UIFont(name: "SFProText-Semibold", size: 34)
+        }
+    }
+}

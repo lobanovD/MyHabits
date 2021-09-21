@@ -11,7 +11,6 @@ class AddNewHabitVC: UIViewController {
 
     var habitColor: UIColor = ColorStyles.orange
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Создать"
@@ -67,8 +66,7 @@ class AddNewHabitVC: UIViewController {
         newHabitColor.addGestureRecognizer(gesture)
         return newHabitColor
     }()
-    //----------------------------------------------------
-    // панель цветов
+
     private lazy var newHabitColors: UIStackView = {
         let newHabitColors = UIStackView()
         newHabitColors.toAutoLayout()
@@ -83,17 +81,20 @@ class AddNewHabitVC: UIViewController {
         let orangeColor = UIButton()
         orangeColor.toAutoLayout()
         orangeColor.backgroundColor = ColorStyles.orange
+        let color = orangeColor.backgroundColor
         orangeColor.colorCircle(width: view.frame.width)
-        orangeColor.addTarget(self, action: #selector(selectOrangeColor), for: .touchUpInside)
+        orangeColor.addTarget(self, action: #selector(selectColor(button:)), for: .touchUpInside)
         return orangeColor
     }()
+
+
 
     private lazy var greenColor: UIButton = {
         let greenColor = UIButton()
         greenColor.toAutoLayout()
         greenColor.backgroundColor = ColorStyles.green
         greenColor.colorCircle(width: view.frame.width)
-        greenColor.addTarget(self, action: #selector(selectGreenColor), for: .touchUpInside)
+        greenColor.addTarget(self, action: #selector(selectColor(button:)), for: .touchUpInside)
         return greenColor
     }()
 
@@ -102,7 +103,7 @@ class AddNewHabitVC: UIViewController {
         purpleColor.toAutoLayout()
         purpleColor.backgroundColor = ColorStyles.purple
         purpleColor.colorCircle(width: view.frame.width)
-        purpleColor.addTarget(self, action: #selector(selectPurpleColor), for: .touchUpInside)
+        purpleColor.addTarget(self, action: #selector(selectColor(button:)), for: .touchUpInside)
         return purpleColor
     }()
 
@@ -111,7 +112,7 @@ class AddNewHabitVC: UIViewController {
         blueColor.toAutoLayout()
         blueColor.backgroundColor = ColorStyles.blue
         blueColor.colorCircle(width: view.frame.width)
-        blueColor.addTarget(self, action: #selector(selectBlueColor), for: .touchUpInside)
+        blueColor.addTarget(self, action: #selector(selectColor(button:)), for: .touchUpInside)
         return blueColor
     }()
 
@@ -120,13 +121,12 @@ class AddNewHabitVC: UIViewController {
         indigoColor.toAutoLayout()
         indigoColor.backgroundColor = ColorStyles.indigo
         indigoColor.colorCircle(width: view.frame.width)
-        indigoColor.addTarget(self, action: #selector(selectIndigoColor), for: .touchUpInside)
+        indigoColor.addTarget(self, action: #selector(selectColor(button:)), for: .touchUpInside)
         return indigoColor
     }()
 
 
 
-    //----------------------------------------------------
 
 
 }
@@ -174,9 +174,15 @@ extension AddNewHabitVC {
         navigationController?.dismiss(animated: true, completion: nil)
     }
 
-    @objc func saveButton(){
+    @objc func saveButton() {
         navigationController?.dismiss(animated: true, completion: nil)
         print("задача сохранена")
+        let newHabit = Habit(name: "\(String(describing: newHabitTitleTF.text))", date: currentDateTime, color: habitColor)
+        HabitsStore.shared.habits.append(newHabit)
+        for i in HabitsStore.shared.habits {
+            print(i.name, i.date)
+        }
+
     }
 
     @objc func habitColorViewPresent() {
@@ -184,44 +190,15 @@ extension AddNewHabitVC {
         newHabitColors.isHidden = false
     }
 
-    @objc func selectOrangeColor() {
-        habitColor = ColorStyles.orange
-        newHabitColor.isHidden = false
-        newHabitColors.isHidden = true
-        newHabitTitleTF.textColor = habitColor
-        newHabitColor.backgroundColor = habitColor
-    }
-
-    @objc func selectGreenColor() {
-        habitColor = ColorStyles.green
-        newHabitColor.isHidden = false
-        newHabitColors.isHidden = true
-        newHabitTitleTF.textColor = habitColor
-        newHabitColor.backgroundColor = habitColor
-    }
-
-    @objc func selectPurpleColor() {
-        habitColor = ColorStyles.purple
-        newHabitColor.isHidden = false
-        newHabitColors.isHidden = true
-        newHabitTitleTF.textColor = habitColor
-        newHabitColor.backgroundColor = habitColor
-    }
-
-    @objc func selectBlueColor() {
-        habitColor = ColorStyles.blue
-        newHabitColor.isHidden = false
-        newHabitColors.isHidden = true
-        newHabitTitleTF.textColor = habitColor
-        newHabitColor.backgroundColor = habitColor
-    }
-
-    @objc func selectIndigoColor() {
-        habitColor = ColorStyles.indigo
-        newHabitColor.isHidden = false
-        newHabitColors.isHidden = true
-        newHabitTitleTF.textColor = habitColor
-        newHabitColor.backgroundColor = habitColor
+    @objc func selectColor(button: UIButton) {
+        if let color = button.backgroundColor {
+            habitColor = color
+            newHabitTitleTF.textColor = button.backgroundColor
+            newHabitColor.isHidden = false
+            newHabitColors.isHidden = true
+            newHabitTitleTF.textColor = button.backgroundColor
+            newHabitColor.backgroundColor = button.backgroundColor
+        }
     }
 
     // MARK: - Constraints

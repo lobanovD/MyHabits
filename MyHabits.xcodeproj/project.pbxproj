@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28053D9426FBE26D006E8A5F /* HabitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28053D9326FBE26D006E8A5F /* HabitTableViewCell.swift */; };
 		284AF5E826F7D5CC002AC041 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 284AF5E726F7D5CC002AC041 /* SF-Pro-Text-Regular.otf */; };
 		284AF5EA26F7D86F002AC041 /* AddNewHabitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284AF5E926F7D86F002AC041 /* AddNewHabitVC.swift */; };
 		284AF5EC26F9232A002AC041 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 284AF5EB26F92329002AC041 /* SF-Pro-Text-Semibold.otf */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		28053D9326FBE26D006E8A5F /* HabitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTableViewCell.swift; sourceTree = "<group>"; };
 		284AF5E726F7D5CC002AC041 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
 		284AF5E926F7D86F002AC041 /* AddNewHabitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewHabitVC.swift; sourceTree = "<group>"; };
 		284AF5EB26F92329002AC041 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
@@ -131,9 +133,10 @@
 		28E588C626F55434003CD78F /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				28C09D0226F3930E00062B83 /* HabitsViewController.swift */,
+				28053D9326FBE26D006E8A5F /* HabitTableViewCell.swift */,
 				284AF5E926F7D86F002AC041 /* AddNewHabitVC.swift */,
 				28C09D0426F3938F00062B83 /* InfoVC.swift */,
-				28C09D0226F3930E00062B83 /* HabitsViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 				284AF5EE26F934B1002AC041 /* AddNewHabitVCConstants.swift in Sources */,
 				28C09CED26F3470E00062B83 /* Extensions.swift in Sources */,
 				28C09CFE26F382BB00062B83 /* TextStyles.swift in Sources */,
+				28053D9426FBE26D006E8A5F /* HabitTableViewCell.swift in Sources */,
 				28C09D0526F3938F00062B83 /* InfoVC.swift in Sources */,
 				28C09D0326F3930E00062B83 /* HabitsViewController.swift in Sources */,
 				28C09CD526F2BC3500062B83 /* AppDelegate.swift in Sources */,

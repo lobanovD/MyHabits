@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIView {
-
+    
     func colorCircle(width: CGFloat) {
         if width <= 428 {
             self.widthAnchor.constraint(equalToConstant: 30).isActive = true
@@ -21,7 +21,12 @@ extension UIView {
             self.layer.cornerRadius = 30
         }
     }
+}
 
+struct AddNewHabitVCConstants {
+    static let leadingMargin: CGFloat = 16
+    static let topMargin: CGFloat = 7
+    static let trailingMargin: CGFloat = -16
 }
 
 

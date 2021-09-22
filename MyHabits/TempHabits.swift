@@ -7,9 +7,9 @@
 
 import Foundation
 
-var habbitsArray: [Habit] = []
+//var habbitsArray: [Habit] = []
 
-let currentDateTime = Date()
+//let currentDateTime = Date()
 
 //let firstHabit = Habit(name: "123", date: currentDateTime, trackDates: [currentDateTime], color: ColorStyles.purple)
 //let secondHabit = Habit(name: "123", date: currentDateTime, trackDates: [currentDateTime], color: ColorStyles.purple)

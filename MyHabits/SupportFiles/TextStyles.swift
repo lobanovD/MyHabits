@@ -31,11 +31,11 @@ extension UILabel {
             self.font = UIFont(name: "SFProText-Regular", size: 17)
         }
         else {
-            self.font = UIFont(name: "SFProText-Regular", size: 24)
+            self.font = UIFont(name: "SFProText-Regular", size: 34)
         }
     }
 
-    func footnote(width: CGFloat) {
+    func textFootnote(width: CGFloat) {
         self.font = UIFont(name: "SFProText-Semibold", size: 13)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineHeightMultiple = 1.16
@@ -53,7 +53,7 @@ extension UILabel {
 
 
 extension UITextField {
-    func headline(width: CGFloat) {
+    func textHeadline(width: CGFloat) {
         self.font = UIFont(name: "SFProText-Semibold", size: 17)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineHeightMultiple = 1.08

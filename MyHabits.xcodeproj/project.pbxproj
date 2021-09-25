@@ -65,6 +65,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		28053D9526FFE0EF006E8A5F /* InfoVC */ = {
+			isa = PBXGroup;
+			children = (
+				28C09D0426F3938F00062B83 /* InfoViewController.swift */,
+				28E588C326F553B8003CD78F /* InfoVCConstants.swift */,
+			);
+			path = InfoVC;
+			sourceTree = "<group>";
+		};
+		28053D9626FFE10C006E8A5F /* SplashVC */ = {
+			isa = PBXGroup;
+			children = (
+				28C09CEA26F3459200062B83 /* SplashScreen.swift */,
+				28E588C126F553AB003CD78F /* SplashVCConstants.swift */,
+			);
+			path = SplashVC;
+			sourceTree = "<group>";
+		};
 		28C09CC826F2BC3500062B83 = {
 			isa = PBXGroup;
 			children = (
@@ -88,7 +106,6 @@
 				28E588C626F55434003CD78F /* VC */,
 				28C09CFF26F38CBC00062B83 /* SupportFiles */,
 				28C09CE226F2BC3D00062B83 /* Info.plist */,
-				28C09CEA26F3459200062B83 /* SplashScreen.swift */,
 				28C09D0826F4BB2D00062B83 /* TempHabits.swift */,
 				28C09CDD26F2BC3D00062B83 /* Assets.xcassets */,
 			);
@@ -123,9 +140,7 @@
 		28E588C526F553F4003CD78F /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				28E588C326F553B8003CD78F /* InfoVCConstants.swift */,
 				284AF5ED26F934B1002AC041 /* AddNewHabitVCConstants.swift */,
-				28E588C126F553AB003CD78F /* SplashVCConstants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -136,7 +151,8 @@
 				28C09D0226F3930E00062B83 /* HabitsViewController.swift */,
 				28053D9326FBE26D006E8A5F /* HabitCollectionViewCell.swift */,
 				284AF5E926F7D86F002AC041 /* HabitViewController.swift */,
-				28C09D0426F3938F00062B83 /* InfoViewController.swift */,
+				28053D9526FFE0EF006E8A5F /* InfoVC */,
+				28053D9626FFE10C006E8A5F /* SplashVC */,
 			);
 			path = VC;
 			sourceTree = "<group>";

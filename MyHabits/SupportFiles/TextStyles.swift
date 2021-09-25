@@ -10,8 +10,6 @@ import UIKit
 extension UILabel {
     
     func textTitle3(width: CGFloat) {
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineHeightMultiple = 1.01
         self.toAutoLayout()
         self.numberOfLines = 0
         if width <= 428 {
@@ -23,8 +21,6 @@ extension UILabel {
     }
 
     func textBody(width: CGFloat) {
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineHeightMultiple = 1.08
         self.toAutoLayout()
         self.numberOfLines = 0
         if width <= 428 {
@@ -37,8 +33,6 @@ extension UILabel {
 
     func textFootnote(width: CGFloat) {
         self.font = UIFont(name: "SFProText-Semibold", size: 13)
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineHeightMultiple = 1.16
         self.toAutoLayout()
         self.numberOfLines = 0
         if width <= 428 {
@@ -51,11 +45,8 @@ extension UILabel {
 
     func textHeadline(width: CGFloat) {
         self.font = UIFont(name: "SFProText-Semibold", size: 17)
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineHeightMultiple = 1.08
         self.toAutoLayout()
         self.numberOfLines = 0
-
         if width <= 428 {
             self.font = UIFont(name: "SFProText-Semibold", size: 17)
         }
@@ -66,8 +57,6 @@ extension UILabel {
 
     func textCaption(width: CGFloat) {
         self.font = UIFont(name: "SFProText-Regular", size: 12)
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineHeightMultiple = 1.12
         self.toAutoLayout()
         self.numberOfLines = 1
         if width <= 428 {
@@ -77,9 +66,6 @@ extension UILabel {
             self.font = UIFont(name: "SFProText-Semibold", size: 24)
         }
     }
-
-
-
 }
 
 

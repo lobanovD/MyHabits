@@ -1,5 +1,5 @@
 //
-//  AddNewHabitVC.swift
+//  HabitViewController.swift
 //  MyHabits
 //
 //  Created by Dmitrii Lobanov on 19.09.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddNewHabitVC: UIViewController {
+class HabitViewController: UIViewController {
 
     var habitColor: UIColor = ColorStyles.orange
 
@@ -175,7 +175,7 @@ class AddNewHabitVC: UIViewController {
 }
 
 // MARK: - Actions
-extension AddNewHabitVC {
+extension HabitViewController {
     private func createCancelButton() {
         let cancelButton = UIBarButtonItem(title: "Отменить",
                                            style: UIBarButtonItem.Style.plain,

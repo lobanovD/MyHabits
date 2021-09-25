@@ -13,7 +13,7 @@ class HabitsViewController: UIViewController {
 
     @IBAction func addNewHabitAction(_ sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let newHabitVC = storyboard.instantiateViewController(withIdentifier: "AddNewHabitVC") as! AddNewHabitVC
+        let newHabitVC = storyboard.instantiateViewController(withIdentifier: "AddNewHabitVC") as! HabitViewController
         let navController = UINavigationController(rootViewController: newHabitVC)
         navController.modalTransitionStyle = .coverVertical
         navController.modalPresentationStyle = .fullScreen

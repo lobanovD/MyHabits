@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		28053D9426FBE26D006E8A5F /* HabitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28053D9326FBE26D006E8A5F /* HabitCollectionViewCell.swift */; };
 		284AF5E826F7D5CC002AC041 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 284AF5E726F7D5CC002AC041 /* SF-Pro-Text-Regular.otf */; };
-		284AF5EA26F7D86F002AC041 /* AddNewHabitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284AF5E926F7D86F002AC041 /* AddNewHabitVC.swift */; };
+		284AF5EA26F7D86F002AC041 /* HabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284AF5E926F7D86F002AC041 /* HabitViewController.swift */; };
 		284AF5EC26F9232A002AC041 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 284AF5EB26F92329002AC041 /* SF-Pro-Text-Semibold.otf */; };
 		284AF5EE26F934B1002AC041 /* AddNewHabitVCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284AF5ED26F934B1002AC041 /* AddNewHabitVCConstants.swift */; };
 		28C09CD526F2BC3500062B83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C09CD426F2BC3500062B83 /* AppDelegate.swift */; };
@@ -32,7 +32,7 @@
 /* Begin PBXFileReference section */
 		28053D9326FBE26D006E8A5F /* HabitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCollectionViewCell.swift; sourceTree = "<group>"; };
 		284AF5E726F7D5CC002AC041 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
-		284AF5E926F7D86F002AC041 /* AddNewHabitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewHabitVC.swift; sourceTree = "<group>"; };
+		284AF5E926F7D86F002AC041 /* HabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewController.swift; sourceTree = "<group>"; };
 		284AF5EB26F92329002AC041 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
 		284AF5ED26F934B1002AC041 /* AddNewHabitVCConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewHabitVCConstants.swift; sourceTree = "<group>"; };
 		28C09CD126F2BC3500062B83 /* MyHabits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyHabits.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,7 +135,7 @@
 			children = (
 				28C09D0226F3930E00062B83 /* HabitsViewController.swift */,
 				28053D9326FBE26D006E8A5F /* HabitCollectionViewCell.swift */,
-				284AF5E926F7D86F002AC041 /* AddNewHabitVC.swift */,
+				284AF5E926F7D86F002AC041 /* HabitViewController.swift */,
 				28C09D0426F3938F00062B83 /* InfoViewController.swift */,
 			);
 			path = VC;
@@ -226,7 +226,7 @@
 				28C09CD526F2BC3500062B83 /* AppDelegate.swift in Sources */,
 				28C09CD726F2BC3500062B83 /* SceneDelegate.swift in Sources */,
 				28C09CEB26F3459200062B83 /* SplashScreen.swift in Sources */,
-				284AF5EA26F7D86F002AC041 /* AddNewHabitVC.swift in Sources */,
+				284AF5EA26F7D86F002AC041 /* HabitViewController.swift in Sources */,
 				28E588C426F553B8003CD78F /* InfoVCConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

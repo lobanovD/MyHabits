@@ -26,11 +26,9 @@ class HabitViewController: UIViewController {
                          newHabitTitleTF,
                          newHabitColorLabel,
                          newHabitColor,
-                         newHabitColors,
                          newHabitTimeTitleLable,
                          newHabitTimeLabel,
                          newHabitDatePicker)
-        newHabitColors.addArrangedSubviews(orangeColor, greenColor, purpleColor, blueColor, indigoColor)
         setupConstraints()
 
     }
@@ -72,61 +70,6 @@ class HabitViewController: UIViewController {
         return newHabitColor
     }()
 
-    private lazy var newHabitColors: UIStackView = {
-        let newHabitColors = UIStackView()
-        newHabitColors.toAutoLayout()
-        newHabitColors.axis = .horizontal
-        newHabitColors.spacing = 7
-        newHabitColors.distribution = .fillEqually
-        newHabitColors.isHidden = true
-        return newHabitColors
-    }()
-
-    private lazy var orangeColor: UIButton = {
-        let orangeColor = UIButton()
-        orangeColor.toAutoLayout()
-        orangeColor.backgroundColor = ColorStyles.orange
-        let color = orangeColor.backgroundColor
-        orangeColor.colorCircle(width: view.frame.width)
-        orangeColor.addTarget(self, action: #selector(selectColor(button:)), for: .touchUpInside)
-        return orangeColor
-    }()
-
-    private lazy var greenColor: UIButton = {
-        let greenColor = UIButton()
-        greenColor.toAutoLayout()
-        greenColor.backgroundColor = ColorStyles.green
-        greenColor.colorCircle(width: view.frame.width)
-        greenColor.addTarget(self, action: #selector(selectColor(button:)), for: .touchUpInside)
-        return greenColor
-    }()
-
-    private lazy var purpleColor: UIButton = {
-        let purpleColor = UIButton()
-        purpleColor.toAutoLayout()
-        purpleColor.backgroundColor = ColorStyles.purple
-        purpleColor.colorCircle(width: view.frame.width)
-        purpleColor.addTarget(self, action: #selector(selectColor(button:)), for: .touchUpInside)
-        return purpleColor
-    }()
-
-    private lazy var blueColor: UIButton = {
-        let blueColor = UIButton()
-        blueColor.toAutoLayout()
-        blueColor.backgroundColor = ColorStyles.blue
-        blueColor.colorCircle(width: view.frame.width)
-        blueColor.addTarget(self, action: #selector(selectColor(button:)), for: .touchUpInside)
-        return blueColor
-    }()
-
-    private lazy var indigoColor: UIButton = {
-        let indigoColor = UIButton()
-        indigoColor.toAutoLayout()
-        indigoColor.backgroundColor = ColorStyles.indigo
-        indigoColor.colorCircle(width: view.frame.width)
-        indigoColor.addTarget(self, action: #selector(selectColor(button:)), for: .touchUpInside)
-        return indigoColor
-    }()
 
     private lazy var newHabitTimeTitleLable: UILabel = {
         let newHabitTimeTitleLable = UILabel()
@@ -175,7 +118,7 @@ class HabitViewController: UIViewController {
 }
 
 // MARK: - Actions
-extension HabitViewController {
+extension HabitViewController: UIColorPickerViewControllerDelegate {
     private func createCancelButton() {
         let cancelButton = UIBarButtonItem(title: "Отменить",
                                            style: UIBarButtonItem.Style.plain,
@@ -217,29 +160,28 @@ extension HabitViewController {
     @objc func saveButton() {
         navigationController?.dismiss(animated: true, completion: nil)
         print("задача сохранена")
-        let newHabit = Habit(name: "\(String(describing: newHabitTitleTF.text))", date: newHabitDatePicker.date, color: habitColor)
+        let newHabit = Habit(name: newHabitTitleTF.text ?? "", date: newHabitDatePicker.date, color: habitColor)
         HabitsStore.shared.habits.append(newHabit)
         for i in HabitsStore.shared.habits {
             print(i.name, i.dateString)
         }
-        
     }
 
     @objc func habitColorViewPresent() {
-        newHabitColor.isHidden = true
-        newHabitColors.isHidden = false
-    }
-
-    @objc func selectColor(button: UIButton) {
-        if let color = button.backgroundColor {
-            habitColor = color
-            newHabitTitleTF.textColor = button.backgroundColor
-            newHabitColor.isHidden = false
-            newHabitColors.isHidden = true
-            newHabitTitleTF.textColor = button.backgroundColor
-            newHabitColor.backgroundColor = button.backgroundColor
+        let colorVC = UIColorPickerViewController()
+        colorVC.delegate = self
+        self.present(colorVC, animated: true) {
+            print(11)
         }
     }
+
+
+    func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
+       habitColor = viewController.selectedColor
+        newHabitColor.backgroundColor = habitColor
+        newHabitTitleTF.textColor = habitColor
+    }
+
 
     @objc func newHabitDatePickerSet() {
         let dateFormatter = DateFormatter()
@@ -273,10 +215,7 @@ extension HabitViewController {
             newHabitColor.topAnchor.constraint(equalTo: newHabitColorLabel.bottomAnchor, constant: AddNewHabitVCConstants.topMargin),
             newHabitColor.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: AddNewHabitVCConstants.leadingMargin),
 
-            newHabitColors.topAnchor.constraint(equalTo: newHabitColorLabel.bottomAnchor, constant: AddNewHabitVCConstants.topMargin),
-            newHabitColors.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: AddNewHabitVCConstants.leadingMargin),
-
-            newHabitTimeTitleLable.topAnchor.constraint(equalTo: newHabitColors.bottomAnchor, constant: AddNewHabitVCConstants.topMargin),
+            newHabitTimeTitleLable.topAnchor.constraint(equalTo: newHabitColor.bottomAnchor, constant: AddNewHabitVCConstants.topMargin),
             newHabitTimeTitleLable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: AddNewHabitVCConstants.leadingMargin),
 
             newHabitTimeLabel.topAnchor.constraint(equalTo: newHabitTimeTitleLable.bottomAnchor, constant: AddNewHabitVCConstants.topMargin),

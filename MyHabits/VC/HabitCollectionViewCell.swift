@@ -50,7 +50,6 @@ class HabitCollectionViewCell: UICollectionViewCell {
     }
 
 
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -64,14 +63,24 @@ extension HabitCollectionViewCell {
 
     
 
-    public func configureCell(name: String, date: Date, trackDates: [Date], color: UIColor) {
-        habitTitle.text = name
-        habitTitle.textColor = color
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .none
-        dateFormatter.timeStyle = .short
-        let currentTime = dateFormatter.string(from: date)
-        habitTime.text = "Каждый день в \(currentTime)"
+//    public func configureCell(name: String, date: Date, trackDates: [Date], color: UIColor, dateString: String) {
+//        habitTitle.text = name
+//        habitTitle.textColor = color
+////        let dateFormatter = DateFormatter()
+////        dateFormatter.dateStyle = .none
+////        dateFormatter.timeStyle = .short
+////        let currentTime = dateFormatter.string(from: date)
+////        habitTime.text = "Каждый день в \(currentTime)"
+//        habitTime.text = dateString
+//
+//    }
+
+
+    func configureCell(habit: Habit) {
+        habitTitle.text = String(describing: habit.name)
+        print(String(describing: habit.name))
+        habitTitle.textColor = habit.color
+        habitTime.text = habit.dateString
 
     }
 

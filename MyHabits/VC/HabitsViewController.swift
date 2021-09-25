@@ -13,7 +13,7 @@ class HabitsViewController: UIViewController {
 
     @IBAction func addNewHabitAction(_ sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let newHabitVC = storyboard.instantiateViewController(withIdentifier: "AddNewHabitVC") as! HabitViewController
+        let newHabitVC = storyboard.instantiateViewController(withIdentifier: "HabitViewController") as! HabitViewController
         let navController = UINavigationController(rootViewController: newHabitVC)
         navController.modalTransitionStyle = .coverVertical
         navController.modalPresentationStyle = .fullScreen
@@ -28,7 +28,14 @@ class HabitsViewController: UIViewController {
         habitCollectionView.delegate = self
         setupConstraints()
 
-    }
+        let a = HabitsStore.shared.habits[0]
+        print(a.name)
+
+       
+
+
+              }
+
 
     override func viewWillAppear(_ animated: Bool) {
         let navigationBar = navigationController?.navigationBar
@@ -94,10 +101,12 @@ extension HabitsViewController: UICollectionViewDataSource, UICollectionViewDele
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = habitCollectionView.dequeueReusableCell(withReuseIdentifier: HabitCollectionViewCell.id, for: indexPath) as! HabitCollectionViewCell
-        cell.configureCell(name: HabitsStore.shared.habits[indexPath.row].name,
-                           date: HabitsStore.shared.habits[indexPath.row].date,
-                           trackDates: HabitsStore.shared.habits[indexPath.row].trackDates,
-                           color: HabitsStore.shared.habits[indexPath.row].color)
+//        cell.configureCell(name: HabitsStore.shared.habits[indexPath.row].name,
+//                           date: HabitsStore.shared.habits[indexPath.row].date,
+//                           trackDates: HabitsStore.shared.habits[indexPath.row].trackDates,
+//                           color: HabitsStore.shared.habits[indexPath.row].color,
+//                           dateString: HabitsStore.shared.habits[indexPath.row].dateString)
+        cell.configureCell(habit: HabitsStore.shared.habits[indexPath.item])
 
 
         return cell

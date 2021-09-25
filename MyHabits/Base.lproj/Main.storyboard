@@ -48,7 +48,7 @@
         <!--Информация-->
         <scene sceneID="o6O-Sl-zcr">
             <objects>
-                <viewController storyboardIdentifier="InfoViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0qU-nU-fAk" customClass="InfoVC" customModule="MyHabits" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InfoViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0qU-nU-fAk" customClass="InfoViewController" customModule="MyHabits" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GTN-DD-OKs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -64,7 +64,7 @@
         <!--Создать-->
         <scene sceneID="QQq-A6-CQr">
             <objects>
-                <viewController storyboardIdentifier="AddNewHabitVC" title="Создать" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VKH-uB-QX3" customClass="AddNewHabitVC" customModule="MyHabits" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HabitViewController" title="Создать" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VKH-uB-QX3" customClass="HabitViewController" customModule="MyHabits" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WWB-hl-OMF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -123,7 +123,7 @@
         <scene sceneID="YdR-mj-Oyx">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fsl-Q5-oBH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Привычки" image="habitsTabBarIcon" id="aN5-3b-e2o"/>
+                    <tabBarItem key="tabBarItem" title="Привычки" image="rectangle.grid.1x2.fill" catalog="system" id="aN5-3b-e2o"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="nyf-eg-kD5"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="mkB-nD-bHO">
@@ -163,9 +163,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="habitsTabBarIcon" width="25" height="23"/>
         <image name="info.circle.fill" catalog="system" width="128" height="121"/>
         <image name="main_icon" width="120" height="120"/>
+        <image name="rectangle.grid.1x2.fill" catalog="system" width="128" height="101"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

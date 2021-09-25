@@ -14,6 +14,19 @@ class InfoVC: UIViewController {
         setupViews()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        let navigationBar = navigationController?.navigationBar
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.shadowColor = ColorStyles.navigationBarSeparator
+        navigationBar?.scrollEdgeAppearance = navigationBarAppearance
+        let tabBar = tabBarController?.tabBar
+        let tabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.shadowColor = ColorStyles.tabBarSeparator
+        if #available(iOS 15.0, *) {
+            tabBar?.scrollEdgeAppearance = tabBarAppearance
+        }
+    }
+
     private lazy var infoScrollView: UIScrollView = {
         let infoScrollView = UIScrollView()
         infoScrollView.toAutoLayout()

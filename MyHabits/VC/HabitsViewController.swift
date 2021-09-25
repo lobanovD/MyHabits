@@ -23,16 +23,26 @@ class HabitsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubviews(plugView, habitTableView)
-        habitTableView.dataSource = self
-        habitTableView.delegate = self
+        view.addSubviews(plugView, habitCollectionView)
+        habitCollectionView.dataSource = self
+        habitCollectionView.delegate = self
         setupConstraints()
 
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        let navigationBar = navigationController?.navigationBar
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.shadowColor = ColorStyles.navigationBarSeparator
+        navigationBar?.scrollEdgeAppearance = navigationBarAppearance
+        let tabBar = tabBarController?.tabBar
+        let tabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.shadowColor = ColorStyles.tabBarSeparator
+        if #available(iOS 15.0, *) {
+            tabBar?.scrollEdgeAppearance = tabBarAppearance
+        }
         addNewHabitButton.tintColor = ColorStyles.purple
+        reloadView()
     }
 
     // MARK: - UI elements
@@ -43,17 +53,23 @@ class HabitsViewController: UIViewController {
         return plugView
     }()
 
-    private lazy var habitTableView: UITableView = {
-        let habitTableView = UITableView()
-        habitTableView.register(HabitTableViewCell.self, forCellReuseIdentifier: HabitTableViewCell.id)
-        habitTableView.toAutoLayout()
-        return habitTableView
+    private lazy var habitCollectionView: UICollectionView = {
+        let habitCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
+
+        habitCollectionView.register(HabitCollectionViewCell.self, forCellWithReuseIdentifier: HabitCollectionViewCell.id)
+        habitCollectionView.toAutoLayout()
+        habitCollectionView.backgroundColor = ColorStyles.lightGray
+        return habitCollectionView
     }()
 
 }
 
     // MARK: - Actions
 extension HabitsViewController {
+
+    public func reloadView() {
+        self.habitCollectionView.reloadData()
+    }
 
     private func setupConstraints() {
         NSLayoutConstraint.activate([
@@ -64,25 +80,20 @@ extension HabitsViewController {
             plugView.heightAnchor.constraint(equalToConstant: 0),
 
 
-            habitTableView.topAnchor.constraint(equalTo: plugView.bottomAnchor),
-            habitTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            habitTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            habitTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            habitCollectionView.topAnchor.constraint(equalTo: plugView.bottomAnchor),
+            habitCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            habitCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            habitCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
 
         ])
     }
 
 }
 
-extension HabitsViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return HabitsStore.shared.habits.count
-    }
+extension HabitsViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = habitTableView.dequeueReusableCell(withIdentifier: HabitTableViewCell.id, for: indexPath) as! HabitTableViewCell
-
-
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = habitCollectionView.dequeueReusableCell(withReuseIdentifier: HabitCollectionViewCell.id, for: indexPath) as! HabitCollectionViewCell
         cell.configureCell(name: HabitsStore.shared.habits[indexPath.row].name,
                            date: HabitsStore.shared.habits[indexPath.row].date,
                            trackDates: HabitsStore.shared.habits[indexPath.row].trackDates,
@@ -90,6 +101,43 @@ extension HabitsViewController: UITableViewDelegate, UITableViewDataSource {
 
 
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return HabitsStore.shared.habits.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        if view.frame.width <= 428 {
+            let itemsPerRow: CGFloat = 1
+            let paddingWidth: CGFloat = 16 * (itemsPerRow + 1)
+            let availableWidth = habitCollectionView.frame.width - paddingWidth
+            let widthPerItem = availableWidth / itemsPerRow
+            return CGSize(width: widthPerItem, height: 130)
+        }
+        else {
+            let itemsPerRow: CGFloat = 2
+            let paddingWidth:CGFloat = 16 * (itemsPerRow + 1)
+            let availableWidth = habitCollectionView.frame.width - paddingWidth
+            let widthPerItem = availableWidth / itemsPerRow
+            return CGSize(width: widthPerItem, height: 130)
+        }
+
+
+
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 22, left: 16, bottom: 22, right: 16)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 12
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 12
     }
 
 

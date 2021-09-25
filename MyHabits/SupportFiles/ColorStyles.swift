@@ -19,5 +19,7 @@ struct ColorStyles {
     static let progressBackgroundColor: UIColor = UIColor(red: 0.847, green: 0.847, blue: 0.847, alpha: 1)
     static let tableSectionHeaderTextColor: UIColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.6)
     static let tableSeparatorColor: UIColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.29)
+    static let navigationBarSeparator = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.29)
+    static let tabBarSeparator = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.29)
 }
 

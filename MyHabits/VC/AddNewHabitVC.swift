@@ -222,6 +222,7 @@ extension AddNewHabitVC {
         for i in HabitsStore.shared.habits {
             print(i.name, i.dateString)
         }
+        
     }
 
     @objc func habitColorViewPresent() {

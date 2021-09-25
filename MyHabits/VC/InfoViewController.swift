@@ -1,5 +1,5 @@
 //
-//  InfoVC.swift
+//  InfoViewController.swift
 //  MyHabits
 //
 //  Created by Dmitrii Lobanov on 16.09.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InfoVC: UIViewController {
+class InfoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

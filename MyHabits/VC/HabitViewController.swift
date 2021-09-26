@@ -159,19 +159,15 @@ extension HabitViewController: UIColorPickerViewControllerDelegate {
 
     @objc func saveButton() {
         navigationController?.dismiss(animated: true, completion: nil)
-        print("задача сохранена")
         let newHabit = Habit(name: newHabitTitleTF.text ?? "", date: newHabitDatePicker.date, color: habitColor)
         HabitsStore.shared.habits.append(newHabit)
-        for i in HabitsStore.shared.habits {
-            print(i.name, i.dateString)
-        }
     }
 
     @objc func habitColorViewPresent() {
         let colorVC = UIColorPickerViewController()
         colorVC.delegate = self
         self.present(colorVC, animated: true) {
-            print(11)
+        
         }
     }
 

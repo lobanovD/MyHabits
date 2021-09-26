@@ -9,18 +9,10 @@ import UIKit
 
 struct InfoVCConstants {
     static let infoTextTitle: String = "Привычка за 21 день"
-
-    
-    static let infoTextEighth: String = "Источник: psychbook.ru"
-
-    static let infoStackViewSpacing: CGFloat = 12
-
     static let topMargin: CGFloat = 22
     static let leadingMargin: CGFloat = 16
     static let trailingMargin: CGFloat = -16
     static let bottomMargin: CGFloat = 16
-
-
     static let infoText: String =
     """
 Прохождение этапов, за которые за 21 день вырабатывается привычка, подчиняется следующему алгоритму:

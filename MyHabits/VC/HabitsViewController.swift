@@ -28,12 +28,6 @@ class HabitsViewController: UIViewController {
         habitCollectionView.delegate = self
         setupConstraints()
 
-        let a = HabitsStore.shared.habits[0]
-        print(a.name)
-
-       
-
-
               }
 
 
@@ -49,8 +43,11 @@ class HabitsViewController: UIViewController {
             tabBar?.scrollEdgeAppearance = tabBarAppearance
         }
         addNewHabitButton.tintColor = ColorStyles.purple
-        reloadView()
+        self.habitCollectionView.reloadData()
+
     }
+
+
 
     // MARK: - UI elements
 
@@ -74,7 +71,7 @@ class HabitsViewController: UIViewController {
     // MARK: - Actions
 extension HabitsViewController {
 
-    public func reloadView() {
+    func reloadView() {
         self.habitCollectionView.reloadData()
     }
 
@@ -94,24 +91,32 @@ extension HabitsViewController {
 
         ])
     }
-
 }
 
 extension HabitsViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = habitCollectionView.dequeueReusableCell(withReuseIdentifier: HabitCollectionViewCell.id, for: indexPath) as! HabitCollectionViewCell
-//        cell.configureCell(name: HabitsStore.shared.habits[indexPath.row].name,
-//                           date: HabitsStore.shared.habits[indexPath.row].date,
-//                           trackDates: HabitsStore.shared.habits[indexPath.row].trackDates,
-//                           color: HabitsStore.shared.habits[indexPath.row].color,
-//                           dateString: HabitsStore.shared.habits[indexPath.row].dateString)
         cell.configureCell(habit: HabitsStore.shared.habits[indexPath.item])
-
-
+        
+        cell.habitTrackCircleAction = { [weak self] in
+            if HabitsStore.shared.habits[indexPath.item].isAlreadyTakenToday {
+                return
+            }
+            else {
+                let habit = HabitsStore.shared.habits[indexPath.item]
+                HabitsStore.shared.track(habit)
+            }
+            self?.habitCollectionView.reloadData()
+        }
         return cell
     }
 
+
+
+
+
+ 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return HabitsStore.shared.habits.count
     }
@@ -132,9 +137,6 @@ extension HabitsViewController: UICollectionViewDataSource, UICollectionViewDele
             let widthPerItem = availableWidth / itemsPerRow
             return CGSize(width: widthPerItem, height: 130)
         }
-
-
-
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -148,6 +150,6 @@ extension HabitsViewController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 12
     }
-
-
 }
+
+

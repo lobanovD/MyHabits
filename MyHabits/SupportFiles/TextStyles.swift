@@ -16,7 +16,7 @@ extension UILabel {
             self.font = UIFont(name: "SFProDisplay-Semibold", size: 20)
         }
         else {
-            self.font = UIFont(name: "SFProDisplay-Semibold", size: 30)
+            self.font = UIFont(name: "SFProDisplay-Semibold", size: 40)
         }
     }
 
@@ -27,12 +27,11 @@ extension UILabel {
             self.font = UIFont(name: "SFProText-Regular", size: 17)
         }
         else {
-            self.font = UIFont(name: "SFProText-Regular", size: 34)
+            self.font = UIFont(name: "SFProText-Regular", size: 24)
         }
     }
 
     func textFootnote(width: CGFloat) {
-        self.font = UIFont(name: "SFProText-Semibold", size: 13)
         self.toAutoLayout()
         self.numberOfLines = 0
         if width <= 428 {
@@ -44,7 +43,6 @@ extension UILabel {
     }
 
     func textHeadline(width: CGFloat) {
-        self.font = UIFont(name: "SFProText-Semibold", size: 17)
         self.toAutoLayout()
         self.numberOfLines = 0
         if width <= 428 {
@@ -52,6 +50,16 @@ extension UILabel {
         }
         else {
             self.font = UIFont(name: "SFProText-Semibold", size: 34)
+        }
+    }
+
+    func textFootnoteCell(width: CGFloat) {
+        self.toAutoLayout()
+        if width <= 428 {
+            self.font = UIFont(name: "SFProText-Regular", size: 13)
+        }
+        else {
+            self.font = UIFont(name: "SFProText-Regular", size: 26)
         }
     }
 

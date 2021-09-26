@@ -11,12 +11,16 @@ class HabitCollectionViewCell: UICollectionViewCell {
 
     static let id = "HabitTableViewCell"
 
+    var habit = Habit(name: "", date: Date(), color: .white)
+
+    var habitTrackCircleAction : (()->())?
+
     override init(frame: CGRect) {
         super.init(frame: .zero)
         contentView.backgroundColor = ColorStyles.lightGray
-                contentView.addSubview(habitCellBackView)
-                habitCellBackView.addSubviews(habitTitle, habitTime)
-                setupConstraints()
+        contentView.addSubview(habitCellBackView)
+        habitCellBackView.addSubviews(habitTitle, habitTime, habitCount, habitTrackButton, habitCheckMarkImageView)
+        setupConstraints()
     }
 
     // MARK: - UI elements
@@ -43,6 +47,37 @@ class HabitCollectionViewCell: UICollectionViewCell {
         return habitTime
     }()
 
+    private lazy var habitCount: UILabel = {
+        let habitCount = UILabel()
+        habitCount.textFootnoteCell(width: contentView.frame.width)
+        habitCount.textColor = .systemGray
+        return habitCount
+    }()
+    
+    lazy var habitTrackButton: UIButton = {
+        let habitTrackButton = UIButton()
+        habitTrackButton.toAutoLayout()
+        habitTrackButton.layer.cornerRadius = 38 / 2
+        habitTrackButton.clipsToBounds = true
+        habitTrackButton.addTarget(self, action: #selector(habitTrackCirclePressed), for: .touchUpInside)
+        return habitTrackButton
+    }()
+
+    private lazy var habitCheckMarkImageView: UIImageView = {
+        let habitCheckMarkImageView = UIImageView(image: UIImage.init(systemName: "checkmark"))
+        habitCheckMarkImageView.tintColor = .white
+        habitCheckMarkImageView.toAutoLayout()
+        return habitCheckMarkImageView
+    }()
+
+
+    @objc func habitTrackCirclePressed() {
+        habitTrackCircleAction?()
+    }
+
+
+
+
 
 
     override func prepareForReuse() {
@@ -61,28 +96,26 @@ class HabitCollectionViewCell: UICollectionViewCell {
 // MARK: - Actions
 extension HabitCollectionViewCell {
 
-    
-
-//    public func configureCell(name: String, date: Date, trackDates: [Date], color: UIColor, dateString: String) {
-//        habitTitle.text = name
-//        habitTitle.textColor = color
-////        let dateFormatter = DateFormatter()
-////        dateFormatter.dateStyle = .none
-////        dateFormatter.timeStyle = .short
-////        let currentTime = dateFormatter.string(from: date)
-////        habitTime.text = "Каждый день в \(currentTime)"
-//        habitTime.text = dateString
-//
-//    }
-
-
     func configureCell(habit: Habit) {
-        habitTitle.text = String(describing: habit.name)
-        print(String(describing: habit.name))
+        habitTitle.text = habit.name
         habitTitle.textColor = habit.color
         habitTime.text = habit.dateString
+        habitCount.text = "Счетчик: \(habit.trackDates.count)"
+        if habit.isAlreadyTakenToday {
+            habitTrackButton.backgroundColor = habit.color
+            habitTrackButton.layer.borderWidth = 0
 
+        }
+        else {
+            habitTrackButton.backgroundColor = .white
+            habitTrackButton.layer.borderWidth = 2
+            habitTrackButton.layer.borderColor = habit.color.cgColor
+        }
     }
+
+
+
+
 
     private func setupConstraints() {
         NSLayoutConstraint.activate([
@@ -98,6 +131,20 @@ extension HabitCollectionViewCell {
 
             habitTime.topAnchor.constraint(equalTo: habitTitle.bottomAnchor, constant: 4),
             habitTime.leadingAnchor.constraint(equalTo: habitCellBackView.leadingAnchor, constant: 20),
+
+            habitCount.leadingAnchor.constraint(equalTo: habitCellBackView.leadingAnchor, constant: 20),
+            habitCount.bottomAnchor.constraint(equalTo: habitCellBackView.bottomAnchor, constant: -20),
+
+            habitTrackButton.widthAnchor.constraint(equalToConstant: 38),
+            habitTrackButton.heightAnchor.constraint(equalToConstant: 38),
+            habitTrackButton.trailingAnchor.constraint(equalTo: habitCellBackView.trailingAnchor, constant: -25),
+            habitTrackButton.centerYAnchor.constraint(equalTo: habitCellBackView.centerYAnchor),
+
+            habitCheckMarkImageView.centerXAnchor.constraint(equalTo: habitTrackButton.centerXAnchor),
+            habitCheckMarkImageView.centerYAnchor.constraint(equalTo: habitTrackButton.centerYAnchor),
+
+
+
 
 
 

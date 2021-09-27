@@ -61,6 +61,34 @@
             </objects>
             <point key="canvasLocation" x="2489.8550724637685" y="591.96428571428567"/>
         </scene>
+        <!--Habit Details View Controller-->
+        <scene sceneID="6ew-kt-iTv">
+            <objects>
+                <tableViewController storyboardIdentifier="HabitDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YeA-0A-sgv" customClass="HabitDetailsViewController" customModule="MyHabits" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="dHH-Vq-kzp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="kLs-AU-n6L">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kLs-AU-n6L" id="NL4-DV-zsq">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="YeA-0A-sgv" id="fd6-YR-JqV"/>
+                            <outlet property="delegate" destination="YeA-0A-sgv" id="ofG-3F-9Zd"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jsi-36-ipL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2996" y="-222"/>
+        </scene>
         <!--Создать-->
         <scene sceneID="QQq-A6-CQr">
             <objects>
@@ -87,7 +115,8 @@
                         <viewLayoutGuide key="safeArea" id="ZgC-IX-YKt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Сегодня" id="TB2-sQ-8H6">
+                    <navigationItem key="navigationItem" title="Сегодня" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="TB2-sQ-8H6">
+                        <barButtonItem key="backBarButtonItem" title="Сегодня" id="DIB-hY-vol"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="BHD-sT-lUJ">
                             <connections>
                                 <action selector="addNewHabitAction:" destination="xyC-0U-H8j" id="EhW-XL-6EX"/>
@@ -162,12 +191,16 @@
             <point key="canvasLocation" x="1579.7101449275362" y="591.96428571428567"/>
         </scene>
     </scenes>
+    <color key="tintColor" systemColor="systemPurpleColor"/>
     <resources>
         <image name="info.circle.fill" catalog="system" width="128" height="121"/>
         <image name="main_icon" width="120" height="120"/>
         <image name="rectangle.grid.1x2.fill" catalog="system" width="128" height="101"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

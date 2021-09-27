@@ -27,6 +27,7 @@ class HabitsViewController: UIViewController {
         habitCollectionView.dataSource = self
         habitCollectionView.delegate = self
         setupConstraints()
+        self.tabBarController?.viewControllers?[0].tabBarItem.title = NSLocalizedString("Привычки", comment: "")
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -41,8 +42,25 @@ class HabitsViewController: UIViewController {
             tabBar?.scrollEdgeAppearance = tabBarAppearance
         }
         addNewHabitButton.tintColor = ColorStyles.purple
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationItem.largeTitleDisplayMode = .always
+        self.tabBarController?.viewControllers?[0].tabBarItem.title = NSLocalizedString("Привычки", comment: "")
         self.habitCollectionView.reloadData()
     }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        title = ""
+        self.tabBarController?.viewControllers?[0].tabBarItem.title = NSLocalizedString("Привычки", comment: "")
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        title = "Сегодня"
+        self.tabBarController?.viewControllers?[0].tabBarItem.title = NSLocalizedString("Привычки", comment: "")
+    }
+//    override func awakeFromNib() {
+//    self.tabBarItem.title = "title"
+//}
+
+
 
     // MARK: - UI elements
 
@@ -65,12 +83,6 @@ class HabitsViewController: UIViewController {
 
 // MARK: - Actions
 extension HabitsViewController {
-
-    func stripTime(from originalDate: Date) -> Date {
-        let components = Calendar.current.dateComponents([.hour, .minute], from: originalDate)
-        let date = Calendar.current.date(from: components)
-        return date!
-    }
 
     func reloadView() {
         self.habitCollectionView.reloadData()
@@ -183,5 +195,22 @@ extension HabitsViewController: UICollectionViewDataSource, UICollectionViewDele
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 12
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    guard let habitDetailsVC = storyboard.instantiateViewController(identifier: "HabitDetailsViewController") as? HabitDetailsViewController else { return }
+            habitDetailsVC.habitIndex = indexPath.item
+            print("нажата\(indexPath.item)")
+
+            habitDetailsVC.modalTransitionStyle = .coverVertical
+            habitDetailsVC.modalPresentationStyle = .fullScreen
+
+            self.navigationController?.pushViewController(habitDetailsVC, animated: true)
+        }
+
+
+
     }
 }

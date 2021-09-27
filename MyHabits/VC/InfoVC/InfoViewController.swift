@@ -25,6 +25,7 @@ class InfoViewController: UIViewController {
         if #available(iOS 15.0, *) {
             tabBar?.scrollEdgeAppearance = tabBarAppearance
         }
+        self.tabBarController?.viewControllers?[0].tabBarItem.title = NSLocalizedString("Привычки", comment: "")
     }
 
     private lazy var infoScrollView: UIScrollView = {

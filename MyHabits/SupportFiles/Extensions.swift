@@ -7,6 +7,12 @@
 
 import UIKit
 
+func stripTime(from originalDate: Date) -> Date {
+    let components = Calendar.current.dateComponents([.hour, .minute], from: originalDate)
+    let date = Calendar.current.date(from: components)
+    return date!
+}
+
 // MARK: - UIStackView
 public extension UIStackView {
     func addArrangedSubviews(_ subviews: UIView...) {

@@ -1,5 +1,5 @@
 //
-//  AddNewHabitVCConstants.swift
+//  HabitVCConstants.swift
 //  MyHabits
 //
 //  Created by Dmitrii Lobanov on 21.09.2021.
@@ -23,7 +23,7 @@ extension UIView {
     }
 }
 
-struct AddNewHabitVCConstants {
+struct HabitVCConstants {
     static let leadingMargin: CGFloat = 16
     static let topMargin: CGFloat = 7
     static let trailingMargin: CGFloat = -16

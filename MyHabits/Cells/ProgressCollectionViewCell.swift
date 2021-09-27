@@ -17,15 +17,14 @@ class ProgressCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(habitsProgressBackView)
         habitsProgressBackView.addSubviews(habitsProgressTitle, habitsProgressPercent, habitsProgressView)
         setupConstraints()
-    
-}
+    }
 
     // MARK: - UI elements
 
     private lazy var habitsProgressBackView: UIView = {
         let habitsProgressBackView = UIView()
         habitsProgressBackView.toAutoLayout()
-        habitsProgressBackView.layer.cornerRadius = 8
+        habitsProgressBackView.layer.cornerRadius = CellConstants.habitsProgressBackViewCornerRadius
         habitsProgressBackView.backgroundColor = .white
         return habitsProgressBackView
     }()
@@ -34,7 +33,7 @@ class ProgressCollectionViewCell: UICollectionViewCell {
         let habitsProgressTitle = UILabel()
         habitsProgressTitle.textFootnote(width: contentView.frame.width)
         habitsProgressTitle.textColor = .systemGray
-        habitsProgressTitle.text = "Все получится!"
+        habitsProgressTitle.text = CellConstants.habitsProgressTitleText
         return habitsProgressTitle
     }()
 
@@ -51,15 +50,15 @@ class ProgressCollectionViewCell: UICollectionViewCell {
         habitsProgressView.progressViewStyle = .bar
         habitsProgressView.trackTintColor = ColorStyles.progressBackground
         habitsProgressView.progressTintColor = ColorStyles.purple
-        habitsProgressView.layer.cornerRadius = 3.5
+        habitsProgressView.layer.cornerRadius = CellConstants.habitsProgressViewHeight / 2
         habitsProgressView.clipsToBounds = true
         habitsProgressView.progress = HabitsStore.shared.todayProgress
         return habitsProgressView
     }()
 
-   public func updateProgress() {
-       habitsProgressView.setProgress(HabitsStore.shared.todayProgress, animated: true)
-       habitsProgressPercent.text = "\(Int(HabitsStore.shared.todayProgress * 100))%"
+    public func updateProgress() {
+        habitsProgressView.setProgress(HabitsStore.shared.todayProgress, animated: true)
+        habitsProgressPercent.text = "\(Int(HabitsStore.shared.todayProgress * 100))%"
     }
 
     override func prepareForReuse() {
@@ -78,20 +77,20 @@ extension ProgressCollectionViewCell {
         NSLayoutConstraint.activate([
 
             habitsProgressBackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            habitsProgressBackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
-            habitsProgressBackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
+            habitsProgressBackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            habitsProgressBackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             habitsProgressBackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
-            habitsProgressTitle.topAnchor.constraint(equalTo: habitsProgressBackView.topAnchor, constant: 10),
-            habitsProgressTitle.leadingAnchor.constraint(equalTo: habitsProgressBackView.leadingAnchor, constant: 12),
+            habitsProgressTitle.topAnchor.constraint(equalTo: habitsProgressBackView.topAnchor, constant: CellConstants.habitsProgressTitleTopMargin),
+            habitsProgressTitle.leadingAnchor.constraint(equalTo: habitsProgressBackView.leadingAnchor, constant: CellConstants.habitsProgressTitleLeadingMargin),
 
-            habitsProgressPercent.topAnchor.constraint(equalTo: habitsProgressBackView.topAnchor, constant: 10),
-            habitsProgressPercent.trailingAnchor.constraint(equalTo: habitsProgressBackView.trailingAnchor, constant: -12),
+            habitsProgressPercent.topAnchor.constraint(equalTo: habitsProgressBackView.topAnchor, constant: CellConstants.habitsProgressPercentTopMargin),
+            habitsProgressPercent.trailingAnchor.constraint(equalTo: habitsProgressBackView.trailingAnchor, constant: CellConstants.habitsProgressPercentTrailingMargin),
 
-            habitsProgressView.leadingAnchor.constraint(equalTo: habitsProgressBackView.leadingAnchor, constant: 12),
-            habitsProgressView.trailingAnchor.constraint(equalTo: habitsProgressBackView.trailingAnchor, constant: -12),
-            habitsProgressView.bottomAnchor.constraint(equalTo: habitsProgressBackView.bottomAnchor, constant: -15),
-            habitsProgressView.heightAnchor.constraint(equalToConstant: 7)
+            habitsProgressView.leadingAnchor.constraint(equalTo: habitsProgressBackView.leadingAnchor, constant: CellConstants.habitsProgressViewLeadingMargin),
+            habitsProgressView.trailingAnchor.constraint(equalTo: habitsProgressBackView.trailingAnchor, constant: CellConstants.habitsProgressViewTrailingMargin),
+            habitsProgressView.bottomAnchor.constraint(equalTo: habitsProgressBackView.bottomAnchor, constant: CellConstants.habitsProgressViewBottomMargin),
+            habitsProgressView.heightAnchor.constraint(equalToConstant: CellConstants.habitsProgressViewHeight)
         ])
     }
 }

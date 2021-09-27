@@ -198,26 +198,26 @@ extension HabitViewController: UIColorPickerViewControllerDelegate {
     private func setupConstraints() {
         NSLayoutConstraint.activate([
 
-            newHabitTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: AddNewHabitVCConstants.topMargin * 3),
-            newHabitTitleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: AddNewHabitVCConstants.leadingMargin),
+            newHabitTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: HabitVCConstants.topMargin * 3),
+            newHabitTitleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: HabitVCConstants.leadingMargin),
 
-            newHabitTitleTF.topAnchor.constraint(equalTo: newHabitTitleLabel.bottomAnchor, constant: AddNewHabitVCConstants.topMargin),
-            newHabitTitleTF.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: AddNewHabitVCConstants.leadingMargin),
-            newHabitTitleTF.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: AddNewHabitVCConstants.trailingMargin),
+            newHabitTitleTF.topAnchor.constraint(equalTo: newHabitTitleLabel.bottomAnchor, constant: HabitVCConstants.topMargin),
+            newHabitTitleTF.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: HabitVCConstants.leadingMargin),
+            newHabitTitleTF.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: HabitVCConstants.trailingMargin),
 
-            newHabitColorLabel.topAnchor.constraint(equalTo: newHabitTitleTF.bottomAnchor, constant: (AddNewHabitVCConstants.topMargin * 2) - 1),
-            newHabitColorLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: AddNewHabitVCConstants.leadingMargin),
+            newHabitColorLabel.topAnchor.constraint(equalTo: newHabitTitleTF.bottomAnchor, constant: (HabitVCConstants.topMargin * 2) - 1),
+            newHabitColorLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: HabitVCConstants.leadingMargin),
 
-            newHabitColor.topAnchor.constraint(equalTo: newHabitColorLabel.bottomAnchor, constant: AddNewHabitVCConstants.topMargin),
-            newHabitColor.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: AddNewHabitVCConstants.leadingMargin),
+            newHabitColor.topAnchor.constraint(equalTo: newHabitColorLabel.bottomAnchor, constant: HabitVCConstants.topMargin),
+            newHabitColor.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: HabitVCConstants.leadingMargin),
 
-            newHabitTimeTitleLable.topAnchor.constraint(equalTo: newHabitColor.bottomAnchor, constant: AddNewHabitVCConstants.topMargin),
-            newHabitTimeTitleLable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: AddNewHabitVCConstants.leadingMargin),
+            newHabitTimeTitleLable.topAnchor.constraint(equalTo: newHabitColor.bottomAnchor, constant: HabitVCConstants.topMargin),
+            newHabitTimeTitleLable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: HabitVCConstants.leadingMargin),
 
-            newHabitTimeLabel.topAnchor.constraint(equalTo: newHabitTimeTitleLable.bottomAnchor, constant: AddNewHabitVCConstants.topMargin),
-            newHabitTimeLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: AddNewHabitVCConstants.leadingMargin),
+            newHabitTimeLabel.topAnchor.constraint(equalTo: newHabitTimeTitleLable.bottomAnchor, constant: HabitVCConstants.topMargin),
+            newHabitTimeLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: HabitVCConstants.leadingMargin),
 
-            newHabitDatePicker.topAnchor.constraint(equalTo: newHabitTimeLabel.bottomAnchor, constant: (AddNewHabitVCConstants.topMargin * 2) - 1),
+            newHabitDatePicker.topAnchor.constraint(equalTo: newHabitTimeLabel.bottomAnchor, constant: (HabitVCConstants.topMargin * 2) - 1),
             newHabitDatePicker.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             newHabitDatePicker.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
         ])

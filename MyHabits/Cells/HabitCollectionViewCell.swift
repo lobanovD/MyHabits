@@ -28,7 +28,7 @@ class HabitCollectionViewCell: UICollectionViewCell {
     private lazy var habitCellBackView: UIView = {
         let habitCellBackView = UIView()
         habitCellBackView.toAutoLayout()
-        habitCellBackView.layer.cornerRadius = 8
+        habitCellBackView.layer.cornerRadius = CellConstants.habitCellBackViewCornerRadius
         habitCellBackView.backgroundColor = .white
         return habitCellBackView
     }()
@@ -57,7 +57,7 @@ class HabitCollectionViewCell: UICollectionViewCell {
     lazy var habitTrackButton: UIButton = {
         let habitTrackButton = UIButton()
         habitTrackButton.toAutoLayout()
-        habitTrackButton.layer.cornerRadius = 38 / 2
+        habitTrackButton.layer.cornerRadius = CellConstants.habitTrackButtonWidth / 2
         habitTrackButton.clipsToBounds = true
         habitTrackButton.addTarget(self, action: #selector(habitTrackCirclePressed), for: .touchUpInside)
         return habitTrackButton
@@ -70,28 +70,13 @@ class HabitCollectionViewCell: UICollectionViewCell {
         return habitCheckMarkImageView
     }()
 
-
-    @objc func habitTrackCirclePressed() {
-        habitTrackCircleAction?()
-    }
-
-
-
-
-
-
     override func prepareForReuse() {
         super.prepareForReuse()
     }
-
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
-
-
 
 // MARK: - Actions
 extension HabitCollectionViewCell {
@@ -112,38 +97,35 @@ extension HabitCollectionViewCell {
         }
     }
 
+    @objc func habitTrackCirclePressed() {
+        habitTrackCircleAction?()
+    }
+
     private func setupConstraints() {
         NSLayoutConstraint.activate([
 
             habitCellBackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            habitCellBackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
-            habitCellBackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
+            habitCellBackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            habitCellBackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             habitCellBackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
-            habitTitle.topAnchor.constraint(equalTo: habitCellBackView.topAnchor, constant: 20),
-            habitTitle.leadingAnchor.constraint(equalTo: habitCellBackView.leadingAnchor, constant: 20),
-            habitTitle.trailingAnchor.constraint(equalTo: habitCellBackView.trailingAnchor, constant: -20),
+            habitTitle.topAnchor.constraint(equalTo: habitCellBackView.topAnchor, constant: CellConstants.habitTitleTopMargin),
+            habitTitle.leadingAnchor.constraint(equalTo: habitCellBackView.leadingAnchor, constant: CellConstants.habitTitleLeadingMargin),
+            habitTitle.trailingAnchor.constraint(equalTo: habitCellBackView.trailingAnchor, constant: CellConstants.habitTitleTrailingMargin),
 
-            habitTime.topAnchor.constraint(equalTo: habitTitle.bottomAnchor, constant: 4),
-            habitTime.leadingAnchor.constraint(equalTo: habitCellBackView.leadingAnchor, constant: 20),
+            habitTime.topAnchor.constraint(equalTo: habitTitle.bottomAnchor, constant: CellConstants.habitTimeTopMargin),
+            habitTime.leadingAnchor.constraint(equalTo: habitCellBackView.leadingAnchor, constant: CellConstants.habitTimeLeadingMargin),
 
-            habitCount.leadingAnchor.constraint(equalTo: habitCellBackView.leadingAnchor, constant: 20),
-            habitCount.bottomAnchor.constraint(equalTo: habitCellBackView.bottomAnchor, constant: -20),
+            habitCount.leadingAnchor.constraint(equalTo: habitCellBackView.leadingAnchor, constant: CellConstants.habitCountLeadingMargin),
+            habitCount.bottomAnchor.constraint(equalTo: habitCellBackView.bottomAnchor, constant: CellConstants.habitCountBottomMargin),
 
-            habitTrackButton.widthAnchor.constraint(equalToConstant: 38),
-            habitTrackButton.heightAnchor.constraint(equalToConstant: 38),
-            habitTrackButton.trailingAnchor.constraint(equalTo: habitCellBackView.trailingAnchor, constant: -25),
+            habitTrackButton.widthAnchor.constraint(equalToConstant: CellConstants.habitTrackButtonWidth),
+            habitTrackButton.heightAnchor.constraint(equalToConstant: CellConstants.habitTrackButtonHeight),
+            habitTrackButton.trailingAnchor.constraint(equalTo: habitCellBackView.trailingAnchor, constant: CellConstants.habitTrackButtonTrailingMargin),
             habitTrackButton.centerYAnchor.constraint(equalTo: habitCellBackView.centerYAnchor),
 
             habitCheckMarkImageView.centerXAnchor.constraint(equalTo: habitTrackButton.centerXAnchor),
             habitCheckMarkImageView.centerYAnchor.constraint(equalTo: habitTrackButton.centerYAnchor),
-
-
-
-
-
-
         ])
     }
-
 }

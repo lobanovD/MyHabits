@@ -28,6 +28,7 @@ class HabitsViewController: UIViewController {
         habitCollectionView.delegate = self
         setupConstraints()
 
+
               }
 
 
@@ -96,8 +97,6 @@ extension HabitsViewController {
             plugView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             plugView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             plugView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            plugView.heightAnchor.constraint(equalToConstant: 0),
-
 
             habitCollectionView.topAnchor.constraint(equalTo: plugView.bottomAnchor),
             habitCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
@@ -132,6 +131,7 @@ extension HabitsViewController: UICollectionViewDataSource, UICollectionViewDele
         }
         else {
             let cell = habitCollectionView.dequeueReusableCell(withReuseIdentifier: ProgressCollectionViewCell.id, for: indexPath) as! ProgressCollectionViewCell
+            cell.updateProgress()
             return cell
         }
 

@@ -13,6 +13,7 @@
 		284AF5EA26F7D86F002AC041 /* HabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284AF5E926F7D86F002AC041 /* HabitViewController.swift */; };
 		284AF5EC26F9232A002AC041 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 284AF5EB26F92329002AC041 /* SF-Pro-Text-Semibold.otf */; };
 		284AF5EE26F934B1002AC041 /* AddNewHabitVCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284AF5ED26F934B1002AC041 /* AddNewHabitVCConstants.swift */; };
+		284C543B270218DD005A466F /* HabitDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284C543A270218DD005A466F /* HabitDetailsViewController.swift */; };
 		28C09CD526F2BC3500062B83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C09CD426F2BC3500062B83 /* AppDelegate.swift */; };
 		28C09CD726F2BC3500062B83 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C09CD626F2BC3500062B83 /* SceneDelegate.swift */; };
 		28C09CDC26F2BC3500062B83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28C09CDA26F2BC3500062B83 /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 		284AF5E926F7D86F002AC041 /* HabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewController.swift; sourceTree = "<group>"; };
 		284AF5EB26F92329002AC041 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
 		284AF5ED26F934B1002AC041 /* AddNewHabitVCConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewHabitVCConstants.swift; sourceTree = "<group>"; };
+		284C543A270218DD005A466F /* HabitDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailsViewController.swift; sourceTree = "<group>"; };
 		28C09CD126F2BC3500062B83 /* MyHabits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyHabits.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28C09CD426F2BC3500062B83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28C09CD626F2BC3500062B83 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +87,15 @@
 			path = SplashVC;
 			sourceTree = "<group>";
 		};
+		284C543C270218F2005A466F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				28053D9326FBE26D006E8A5F /* HabitCollectionViewCell.swift */,
+				28053D9727011ABB006E8A5F /* ProgressCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		28C09CC826F2BC3500062B83 = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +117,7 @@
 			children = (
 				28C09CDA26F2BC3500062B83 /* Main.storyboard */,
 				28E588C626F55434003CD78F /* VC */,
+				284C543C270218F2005A466F /* Cells */,
 				28C09CFF26F38CBC00062B83 /* SupportFiles */,
 				28C09CE226F2BC3D00062B83 /* Info.plist */,
 				28C09D0826F4BB2D00062B83 /* TempHabits.swift */,
@@ -151,9 +163,8 @@
 			isa = PBXGroup;
 			children = (
 				28C09D0226F3930E00062B83 /* HabitsViewController.swift */,
-				28053D9326FBE26D006E8A5F /* HabitCollectionViewCell.swift */,
-				28053D9727011ABB006E8A5F /* ProgressCollectionViewCell.swift */,
 				284AF5E926F7D86F002AC041 /* HabitViewController.swift */,
+				284C543A270218DD005A466F /* HabitDetailsViewController.swift */,
 				28053D9526FFE0EF006E8A5F /* InfoVC */,
 				28053D9626FFE10C006E8A5F /* SplashVC */,
 			);
@@ -234,6 +245,7 @@
 			files = (
 				28C09CE926F2BE6400062B83 /* HabitsStore.swift in Sources */,
 				28C09CFC26F37ED400062B83 /* ColorStyles.swift in Sources */,
+				284C543B270218DD005A466F /* HabitDetailsViewController.swift in Sources */,
 				28C09D0926F4BB2D00062B83 /* TempHabits.swift in Sources */,
 				28E588C226F553AB003CD78F /* SplashVCConstants.swift in Sources */,
 				284AF5EE26F934B1002AC041 /* AddNewHabitVCConstants.swift in Sources */,

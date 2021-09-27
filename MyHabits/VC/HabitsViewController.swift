@@ -119,11 +119,11 @@ extension HabitsViewController: UICollectionViewDataSource, UICollectionViewDele
             cell.configureCell(habit: tempHabitArray[indexPath.item])
 
             cell.habitTrackCircleAction = { [weak self] in
-                if HabitsStore.shared.habits[indexPath.item].isAlreadyTakenToday {
+                if tempHabitArray[indexPath.item].isAlreadyTakenToday {
                     return
                 }
                 else {
-                    let habit = HabitsStore.shared.habits[indexPath.item]
+                    let habit = tempHabitArray[indexPath.item]
                     HabitsStore.shared.track(habit)
                 }
                 self?.habitCollectionView.reloadData()

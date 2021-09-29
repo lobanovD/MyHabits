@@ -104,7 +104,6 @@ extension HabitCollectionViewCell {
         if habit.isAlreadyTakenToday {
             habitTrackButton.backgroundColor = habit.color
             habitTrackButton.layer.borderWidth = 0
-
         }
         else {
             habitTrackButton.backgroundColor = .white
@@ -112,10 +111,6 @@ extension HabitCollectionViewCell {
             habitTrackButton.layer.borderColor = habit.color.cgColor
         }
     }
-
-
-
-
 
     private func setupConstraints() {
         NSLayoutConstraint.activate([

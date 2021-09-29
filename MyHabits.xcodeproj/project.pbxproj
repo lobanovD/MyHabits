@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		28053D9426FBE26D006E8A5F /* HabitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28053D9326FBE26D006E8A5F /* HabitCollectionViewCell.swift */; };
+		28053D9827011ABC006E8A5F /* ProgressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28053D9727011ABB006E8A5F /* ProgressCollectionViewCell.swift */; };
 		284AF5E826F7D5CC002AC041 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 284AF5E726F7D5CC002AC041 /* SF-Pro-Text-Regular.otf */; };
 		284AF5EA26F7D86F002AC041 /* HabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284AF5E926F7D86F002AC041 /* HabitViewController.swift */; };
 		284AF5EC26F9232A002AC041 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 284AF5EB26F92329002AC041 /* SF-Pro-Text-Semibold.otf */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		28053D9326FBE26D006E8A5F /* HabitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCollectionViewCell.swift; sourceTree = "<group>"; };
+		28053D9727011ABB006E8A5F /* ProgressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCollectionViewCell.swift; sourceTree = "<group>"; };
 		284AF5E726F7D5CC002AC041 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
 		284AF5E926F7D86F002AC041 /* HabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewController.swift; sourceTree = "<group>"; };
 		284AF5EB26F92329002AC041 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			children = (
 				28C09D0226F3930E00062B83 /* HabitsViewController.swift */,
 				28053D9326FBE26D006E8A5F /* HabitCollectionViewCell.swift */,
+				28053D9727011ABB006E8A5F /* ProgressCollectionViewCell.swift */,
 				284AF5E926F7D86F002AC041 /* HabitViewController.swift */,
 				28053D9526FFE0EF006E8A5F /* InfoVC */,
 				28053D9626FFE10C006E8A5F /* SplashVC */,
@@ -243,6 +246,7 @@
 				28C09CD726F2BC3500062B83 /* SceneDelegate.swift in Sources */,
 				28C09CEB26F3459200062B83 /* SplashScreen.swift in Sources */,
 				284AF5EA26F7D86F002AC041 /* HabitViewController.swift in Sources */,
+				28053D9827011ABC006E8A5F /* ProgressCollectionViewCell.swift in Sources */,
 				28E588C426F553B8003CD78F /* InfoVCConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

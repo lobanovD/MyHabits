@@ -31,6 +31,14 @@ class HabitsViewController: UIViewController {
               }
 
 
+
+
+
+
+
+
+
+
     override func viewWillAppear(_ animated: Bool) {
         let navigationBar = navigationController?.navigationBar
         let navigationBarAppearance = UINavigationBarAppearance()
@@ -61,6 +69,7 @@ class HabitsViewController: UIViewController {
         let habitCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
 
         habitCollectionView.register(HabitCollectionViewCell.self, forCellWithReuseIdentifier: HabitCollectionViewCell.id)
+        habitCollectionView.register(ProgressCollectionViewCell.self, forCellWithReuseIdentifier: ProgressCollectionViewCell.id)
         habitCollectionView.toAutoLayout()
         habitCollectionView.backgroundColor = ColorStyles.lightGray
         return habitCollectionView
@@ -70,6 +79,12 @@ class HabitsViewController: UIViewController {
 
     // MARK: - Actions
 extension HabitsViewController {
+
+    func stripTime(from originalDate: Date) -> Date {
+        let components = Calendar.current.dateComponents([.hour, .minute], from: originalDate)
+        let date = Calendar.current.date(from: components)
+        return date!
+    }
 
     func reloadView() {
         self.habitCollectionView.reloadData()
@@ -96,51 +111,87 @@ extension HabitsViewController {
 extension HabitsViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = habitCollectionView.dequeueReusableCell(withReuseIdentifier: HabitCollectionViewCell.id, for: indexPath) as! HabitCollectionViewCell
-        cell.configureCell(habit: HabitsStore.shared.habits[indexPath.item])
-        
-        cell.habitTrackCircleAction = { [weak self] in
-            if HabitsStore.shared.habits[indexPath.item].isAlreadyTakenToday {
-                return
+
+        if indexPath.section == 1 {
+            let cell = habitCollectionView.dequeueReusableCell(withReuseIdentifier: HabitCollectionViewCell.id, for: indexPath) as! HabitCollectionViewCell
+            var tempHabitArray = HabitsStore.shared.habits
+            tempHabitArray.sort(by: {stripTime(from: $0.date) < stripTime(from: $1.date)})
+            cell.configureCell(habit: tempHabitArray[indexPath.item])
+
+            cell.habitTrackCircleAction = { [weak self] in
+                if HabitsStore.shared.habits[indexPath.item].isAlreadyTakenToday {
+                    return
+                }
+                else {
+                    let habit = HabitsStore.shared.habits[indexPath.item]
+                    HabitsStore.shared.track(habit)
+                }
+                self?.habitCollectionView.reloadData()
             }
-            else {
-                let habit = HabitsStore.shared.habits[indexPath.item]
-                HabitsStore.shared.track(habit)
-            }
-            self?.habitCollectionView.reloadData()
+            return cell
         }
-        return cell
+        else {
+            let cell = habitCollectionView.dequeueReusableCell(withReuseIdentifier: ProgressCollectionViewCell.id, for: indexPath) as! ProgressCollectionViewCell
+            return cell
+        }
+
+
     }
 
 
-
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
 
 
  
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return HabitsStore.shared.habits.count
+        if section == 1 {
+            return HabitsStore.shared.habits.count
+        }
+        else {
+            return 1
+        }
+
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        if view.frame.width <= 428 {
+        if indexPath.section == 1 {
+            if view.frame.width <= 428 {
+                let itemsPerRow: CGFloat = 1
+                let paddingWidth: CGFloat = 16 * (itemsPerRow + 1)
+                let availableWidth = habitCollectionView.frame.width - paddingWidth
+                let widthPerItem = availableWidth / itemsPerRow
+                return CGSize(width: widthPerItem, height: 130)
+            }
+            else {
+                let itemsPerRow: CGFloat = 2
+                let paddingWidth:CGFloat = 16 * (itemsPerRow + 1)
+                let availableWidth = habitCollectionView.frame.width - paddingWidth
+                let widthPerItem = availableWidth / itemsPerRow
+                return CGSize(width: widthPerItem, height: 130)
+            }
+        }
+        else {
             let itemsPerRow: CGFloat = 1
             let paddingWidth: CGFloat = 16 * (itemsPerRow + 1)
             let availableWidth = habitCollectionView.frame.width - paddingWidth
             let widthPerItem = availableWidth / itemsPerRow
-            return CGSize(width: widthPerItem, height: 130)
+            return CGSize(width: widthPerItem, height: 60)
         }
-        else {
-            let itemsPerRow: CGFloat = 2
-            let paddingWidth:CGFloat = 16 * (itemsPerRow + 1)
-            let availableWidth = habitCollectionView.frame.width - paddingWidth
-            let widthPerItem = availableWidth / itemsPerRow
-            return CGSize(width: widthPerItem, height: 130)
-        }
+
+
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 22, left: 16, bottom: 22, right: 16)
+        if section == 1 {
+            return UIEdgeInsets(top: 18, left: 16, bottom: 18, right: 16)
+        }
+        else {
+            return UIEdgeInsets(top: 22, left: 16, bottom: 0, right: 16)
+        }
+
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

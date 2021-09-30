@@ -12,8 +12,8 @@ class HabitsViewController: UIViewController {
     @IBOutlet weak var addNewHabitButton: UIBarButtonItem!
 
     @IBAction func addNewHabitAction(_ sender: UIBarButtonItem) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let newHabitVC = storyboard.instantiateViewController(withIdentifier: "HabitViewController") as! HabitViewController
+        let storyboard = UIStoryboard(name: HabitsVCConstant.storyboardName, bundle: nil)
+        let newHabitVC = storyboard.instantiateViewController(withIdentifier: HabitViewController.id) as! HabitViewController
         let navController = UINavigationController(rootViewController: newHabitVC)
         navController.modalTransitionStyle = .coverVertical
         navController.modalPresentationStyle = .fullScreen
@@ -44,16 +44,20 @@ class HabitsViewController: UIViewController {
         addNewHabitButton.tintColor = ColorStyles.purple
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationItem.largeTitleDisplayMode = .always
-        self.tabBarController?.viewControllers?[0].tabBarItem.title = NSLocalizedString("Привычки", comment: "")
+        correctTabBarTitle()
         self.habitCollectionView.reloadData()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         title = ""
-        self.tabBarController?.viewControllers?[0].tabBarItem.title = NSLocalizedString("Привычки", comment: "")
+        correctTabBarTitle()
     }
     override func viewDidDisappear(_ animated: Bool) {
-        title = "Сегодня"
+        title = HabitsVCConstant.title
+        correctTabBarTitle()
+    }
+
+    private func correctTabBarTitle() {
         self.tabBarController?.viewControllers?[0].tabBarItem.title = NSLocalizedString("Привычки", comment: "")
     }
 
@@ -130,9 +134,8 @@ extension HabitsViewController: UICollectionViewDataSource, UICollectionViewDele
 
     }
 
-
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return HabitsVCConstant.numberOfSections
     }
 
 
@@ -142,7 +145,7 @@ extension HabitsViewController: UICollectionViewDataSource, UICollectionViewDele
             return HabitsStore.shared.habits.count
         }
         else {
-            return 1
+            return HabitsVCConstant.defaultNumberOfItemsInSection
         }
 
     }
@@ -155,14 +158,14 @@ extension HabitsViewController: UICollectionViewDataSource, UICollectionViewDele
                 let paddingWidth: CGFloat = 16 * (itemsPerRow + 1)
                 let availableWidth = habitCollectionView.frame.width - paddingWidth
                 let widthPerItem = availableWidth / itemsPerRow
-                return CGSize(width: widthPerItem, height: 130)
+                return CGSize(width: widthPerItem, height: HabitsVCConstant.cellHeight)
             }
             else {
                 let itemsPerRow: CGFloat = 2
                 let paddingWidth:CGFloat = 16 * (itemsPerRow + 1)
                 let availableWidth = habitCollectionView.frame.width - paddingWidth
                 let widthPerItem = availableWidth / itemsPerRow
-                return CGSize(width: widthPerItem, height: 130)
+                return CGSize(width: widthPerItem, height: HabitsVCConstant.cellHeight)
             }
         }
         else {
@@ -170,42 +173,37 @@ extension HabitsViewController: UICollectionViewDataSource, UICollectionViewDele
             let paddingWidth: CGFloat = 16 * (itemsPerRow + 1)
             let availableWidth = habitCollectionView.frame.width - paddingWidth
             let widthPerItem = availableWidth / itemsPerRow
-            return CGSize(width: widthPerItem, height: 60)
+            return CGSize(width: widthPerItem, height: HabitsVCConstant.progressCellHeight)
         }
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         if section == 1 {
-            return UIEdgeInsets(top: 18, left: 16, bottom: 18, right: 16)
+            return HabitsVCConstant.progressInsetForSectionAt
         }
         else {
-            return UIEdgeInsets(top: 22, left: 16, bottom: 0, right: 16)
+            return HabitsVCConstant.mainInsetForSectionAt
         }
-
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 12
+        return HabitsVCConstant.minimumLineSpacingForSectionAt
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 12
+        return HabitsVCConstant.minimumInteritemSpacingForSectionAt
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 1 {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    guard let habitDetailsVC = storyboard.instantiateViewController(identifier: "HabitDetailsViewController") as? HabitDetailsViewController else { return }
+            let storyboard = UIStoryboard(name: HabitsVCConstant.storyboardName, bundle: nil)
+            guard let habitDetailsVC = storyboard.instantiateViewController(identifier: HabitDetailsViewController.id) as? HabitDetailsViewController else { return }
             habitDetailsVC.habitIndex = indexPath.item
-            print("нажата\(indexPath.item)")
 
             habitDetailsVC.modalTransitionStyle = .coverVertical
             habitDetailsVC.modalPresentationStyle = .fullScreen
 
             self.navigationController?.pushViewController(habitDetailsVC, animated: true)
         }
-
-
-
     }
 }

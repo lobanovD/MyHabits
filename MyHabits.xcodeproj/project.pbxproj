@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28020FE82706601900432EDE /* HabitDetailsVCConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28020FE72706601900432EDE /* HabitDetailsVCConstant.swift */; };
+		28020FEA2706612F00432EDE /* HabitsVCConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28020FE92706612F00432EDE /* HabitsVCConstant.swift */; };
 		28053D9426FBE26D006E8A5F /* HabitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28053D9326FBE26D006E8A5F /* HabitCollectionViewCell.swift */; };
 		28053D9827011ABC006E8A5F /* ProgressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28053D9727011ABB006E8A5F /* ProgressCollectionViewCell.swift */; };
 		284AF5E826F7D5CC002AC041 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 284AF5E726F7D5CC002AC041 /* SF-Pro-Text-Regular.otf */; };
@@ -34,6 +36,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		28020FE72706601900432EDE /* HabitDetailsVCConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailsVCConstant.swift; sourceTree = "<group>"; };
+		28020FE92706612F00432EDE /* HabitsVCConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsVCConstant.swift; sourceTree = "<group>"; };
 		28053D9326FBE26D006E8A5F /* HabitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCollectionViewCell.swift; sourceTree = "<group>"; };
 		28053D9727011ABB006E8A5F /* ProgressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCollectionViewCell.swift; sourceTree = "<group>"; };
 		284AF5E726F7D5CC002AC041 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
@@ -106,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				28C09D0226F3930E00062B83 /* HabitsViewController.swift */,
+				28020FE92706612F00432EDE /* HabitsVCConstant.swift */,
 			);
 			path = HabitsVC;
 			sourceTree = "<group>";
@@ -123,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				284C543A270218DD005A466F /* HabitDetailsViewController.swift */,
+				28020FE72706601900432EDE /* HabitDetailsVCConstant.swift */,
 			);
 			path = HabitDetailsVC;
 			sourceTree = "<group>";
@@ -170,7 +176,6 @@
 		28C09CFF26F38CBC00062B83 /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
-				28E588C526F553F4003CD78F /* Constants */,
 				28C09CF026F34D8F00062B83 /* Fonts */,
 				28C09CE826F2BE6400062B83 /* HabitsStore.swift */,
 				28C09CD426F2BC3500062B83 /* AppDelegate.swift */,
@@ -180,13 +185,6 @@
 				28C09CFD26F382BB00062B83 /* TextStyles.swift */,
 			);
 			path = SupportFiles;
-			sourceTree = "<group>";
-		};
-		28E588C526F553F4003CD78F /* Constants */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Constants;
 			sourceTree = "<group>";
 		};
 		28E588C626F55434003CD78F /* VC */ = {
@@ -288,7 +286,9 @@
 				28C09D0326F3930E00062B83 /* HabitsViewController.swift in Sources */,
 				28C09CD526F2BC3500062B83 /* AppDelegate.swift in Sources */,
 				28C09CD726F2BC3500062B83 /* SceneDelegate.swift in Sources */,
+				28020FEA2706612F00432EDE /* HabitsVCConstant.swift in Sources */,
 				28C09CEB26F3459200062B83 /* SplashScreen.swift in Sources */,
+				28020FE82706601900432EDE /* HabitDetailsVCConstant.swift in Sources */,
 				284AF5EA26F7D86F002AC041 /* HabitViewController.swift in Sources */,
 				28053D9827011ABC006E8A5F /* ProgressCollectionViewCell.swift in Sources */,
 				28E588C426F553B8003CD78F /* InfoVCConstants.swift in Sources */,

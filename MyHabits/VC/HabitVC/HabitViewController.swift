@@ -9,7 +9,12 @@ import UIKit
 
 class HabitViewController: UIViewController {
 
+    static let id = "HabitViewController"
+
+    var habitIndex: Int? = nil
+
     var habitColor: UIColor = ColorStyles.orange
+
 
     let currentDateTime = Date()
 
@@ -22,13 +27,13 @@ class HabitViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         createCancelButton()
         createSaveButton()
-        view.addSubviews(newHabitTitleLabel,
-                         newHabitTitleTF,
-                         newHabitColorLabel,
-                         newHabitColor,
-                         newHabitTimeTitleLable,
-                         newHabitTimeLabel,
-                         newHabitDatePicker)
+        view.addSubviews(HabitTitleLabel,
+                         HabitTitleTF,
+                         HabitColorLabel,
+                         HabitColor,
+                         HabitTimeTitleLable,
+                         HabitTimeLabel,
+                         HabitDatePicker)
         setupConstraints()
 
     }
@@ -36,66 +41,78 @@ class HabitViewController: UIViewController {
 
     // MARK: - UI elements
 
-    private lazy var newHabitTitleLabel: UILabel = {
-        let newHabitTitleLabel = UILabel()
-        newHabitTitleLabel.text = "НАЗВАНИЕ"
-        newHabitTitleLabel.textFootnote(width: view.frame.width)
-        return newHabitTitleLabel
+    private lazy var HabitTitleLabel: UILabel = {
+        let HabitTitleLabel = UILabel()
+        HabitTitleLabel.text = "НАЗВАНИЕ"
+        HabitTitleLabel.textFootnote(width: view.frame.width)
+        return HabitTitleLabel
     }()
 
-    private lazy var newHabitTitleTF: UITextField = {
-        let newHabitTitleTF = UITextField()
-        newHabitTitleTF.textHeadline(width: view.frame.width)
-        newHabitTitleTF.placeholder = "Бегать по утрам, спать 8 часов и т.п."
-        newHabitTitleTF.autocorrectionType = .no
-        newHabitTitleTF.textColor = habitColor
-        newHabitTitleTF.becomeFirstResponder()
-        return newHabitTitleTF
+    private lazy var HabitTitleTF: UITextField = {
+        let HabitTitleTF = UITextField()
+        HabitTitleTF.textHeadline(width: view.frame.width)
+        HabitTitleTF.placeholder = "Бегать по утрам, спать 8 часов и т.п."
+        HabitTitleTF.autocorrectionType = .no
+
+        if habitIndex != nil {
+            HabitTitleTF.text = HabitsStore.shared.habits[habitIndex!].name
+            habitColor = HabitsStore.shared.habits[habitIndex!].color
+        }
+        HabitTitleTF.textColor = habitColor
+        HabitTitleTF.becomeFirstResponder()
+        return HabitTitleTF
     }()
 
-    private lazy var newHabitColorLabel: UILabel = {
-        let newHabitColorLabel = UILabel()
-        newHabitColorLabel.text = "ЦВЕТ"
-        newHabitColorLabel.textFootnote(width: view.frame.width)
-        return newHabitColorLabel
+    private lazy var HabitColorLabel: UILabel = {
+        let HabitColorLabel = UILabel()
+        HabitColorLabel.text = "ЦВЕТ"
+        HabitColorLabel.textFootnote(width: view.frame.width)
+        return HabitColorLabel
     }()
 
-    private lazy var newHabitColor: UIView = {
-        let newHabitColor = UIView()
-        newHabitColor.toAutoLayout()
-        newHabitColor.backgroundColor = habitColor
-        newHabitColor.colorCircle(width: view.frame.width)
+    private lazy var HabitColor: UIView = {
+        let HabitColor = UIView()
+        HabitColor.toAutoLayout()
+        if habitIndex != nil {
+            habitColor = HabitsStore.shared.habits[habitIndex!].color
+        }
+        HabitColor.backgroundColor = habitColor
+        HabitColor.colorCircle(width: view.frame.width)
         let gesture = UITapGestureRecognizer(target: self, action: #selector(habitColorViewPresent))
-        newHabitColor.addGestureRecognizer(gesture)
-        return newHabitColor
+        HabitColor.addGestureRecognizer(gesture)
+        return HabitColor
     }()
 
 
-    private lazy var newHabitTimeTitleLable: UILabel = {
-        let newHabitTimeTitleLable = UILabel()
-        newHabitTimeTitleLable.text = "ВРЕМЯ"
-        newHabitTimeTitleLable.textFootnote(width: view.frame.width)
-        return newHabitTimeTitleLable
+    private lazy var HabitTimeTitleLable: UILabel = {
+        let HabitTimeTitleLable = UILabel()
+        HabitTimeTitleLable.text = "ВРЕМЯ"
+        HabitTimeTitleLable.textFootnote(width: view.frame.width)
+        return HabitTimeTitleLable
     }()
 
-    private lazy var newHabitTimeLabel: UILabel = {
-        let newHabitTimeLabel = UILabel()
-        newHabitTimeLabel.textBody(width: view.frame.width)
-        return newHabitTimeLabel
+    private lazy var HabitTimeLabel: UILabel = {
+        let HabitTimeLabel = UILabel()
+        HabitTimeLabel.textBody(width: view.frame.width)
+        return HabitTimeLabel
     }()
 
-    private lazy var newHabitDatePicker: UIDatePicker = {
-        let newHabitDatePicker = UIDatePicker()
-        newHabitDatePicker.toAutoLayout()
-        newHabitDatePicker.datePickerMode = .time
-        newHabitDatePicker.date = currentDateTime
-        newHabitDatePicker.preferredDatePickerStyle = .wheels
-        newHabitDatePicker.addTarget(self, action: #selector(newHabitDatePickerSet), for: .valueChanged)
+    private lazy var HabitDatePicker: UIDatePicker = {
+        let HabitDatePicker = UIDatePicker()
+        HabitDatePicker.toAutoLayout()
+        HabitDatePicker.datePickerMode = .time
+        if habitIndex != nil {
+            HabitDatePicker.date = HabitsStore.shared.habits[habitIndex!].date
+        } else {
+            HabitDatePicker.date = currentDateTime
+        }
+        HabitDatePicker.preferredDatePickerStyle = .wheels
+        HabitDatePicker.addTarget(self, action: #selector(HabitDatePickerSet), for: .valueChanged)
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .none
         dateFormatter.timeStyle = .short
-        let date = newHabitDatePicker.date
+        let date = HabitDatePicker.date
         let currentTime = dateFormatter.string(from: date)
 
         let attributedStringColor = [NSAttributedString.Key.foregroundColor : ColorStyles.purple]
@@ -105,15 +122,15 @@ class HabitViewController: UIViewController {
         var concate = NSMutableAttributedString(attributedString: attributedString1)
         concate.append(attributedString2)
 
-        newHabitTimeLabel.attributedText = concate
+        HabitTimeLabel.attributedText = concate
 
         if view.frame.width <= 428 {
-            newHabitDatePicker.transform = CGAffineTransform(scaleX: 1, y: 1)
+            HabitDatePicker.transform = CGAffineTransform(scaleX: 1, y: 1)
         }
         else {
-            newHabitDatePicker.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+            HabitDatePicker.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
         }
-        return newHabitDatePicker
+        return HabitDatePicker
     }()
 }
 
@@ -138,9 +155,9 @@ extension HabitViewController: UIColorPickerViewControllerDelegate {
 
     private func createSaveButton() {
         let saveButton = UIBarButtonItem(title: "Сохранить",
-                                           style: UIBarButtonItem.Style.plain,
-                                           target: self,
-                                           action: #selector(saveButton))
+                                         style: UIBarButtonItem.Style.plain,
+                                         target: self,
+                                         action: #selector(saveButton))
 
         let saveButtonAttributes = [
             NSAttributedString.Key.font: UIFont(name: "SFProText-Semibold", size: 17)!,
@@ -159,38 +176,45 @@ extension HabitViewController: UIColorPickerViewControllerDelegate {
 
     @objc func saveButton() {
         navigationController?.dismiss(animated: true, completion: nil)
-        let newHabit = Habit(name: newHabitTitleTF.text ?? "", date: newHabitDatePicker.date, color: habitColor)
-        HabitsStore.shared.habits.append(newHabit)
+        if habitIndex != nil {
+            HabitsStore.shared.habits[habitIndex!].name = HabitTitleTF.text ?? ""
+            HabitsStore.shared.habits[habitIndex!].color = habitColor
+            HabitsStore.shared.habits[habitIndex!].date = HabitDatePicker.date
+        } else {
+            let Habit = Habit(name: HabitTitleTF.text ?? "", date: HabitDatePicker.date, color: habitColor)
+            HabitsStore.shared.habits.append(Habit)
+        }
+
     }
 
     @objc func habitColorViewPresent() {
         let colorVC = UIColorPickerViewController()
         colorVC.delegate = self
         self.present(colorVC, animated: true) {
-        
+
         }
     }
 
 
     func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
-       habitColor = viewController.selectedColor
-        newHabitColor.backgroundColor = habitColor
-        newHabitTitleTF.textColor = habitColor
+        habitColor = viewController.selectedColor
+        HabitColor.backgroundColor = habitColor
+        HabitTitleTF.textColor = habitColor
     }
 
 
-    @objc func newHabitDatePickerSet() {
+    @objc func HabitDatePickerSet() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .none
         dateFormatter.timeStyle = .short
-        let date = newHabitDatePicker.date
+        let date = HabitDatePicker.date
         let currentTime = dateFormatter.string(from: date)
         let attributedStringColor = [NSAttributedString.Key.foregroundColor : ColorStyles.purple]
         let attributedString1 = NSAttributedString(string: "Каждый день в ", attributes: nil)
         let attributedString2 = NSAttributedString(string: currentTime, attributes: attributedStringColor)
         let concate = NSMutableAttributedString(attributedString: attributedString1)
         concate.append(attributedString2)
-        newHabitTimeLabel.attributedText = concate
+        HabitTimeLabel.attributedText = concate
     }
 
     // MARK: - Constraints
@@ -198,28 +222,28 @@ extension HabitViewController: UIColorPickerViewControllerDelegate {
     private func setupConstraints() {
         NSLayoutConstraint.activate([
 
-            newHabitTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: HabitVCConstants.topMargin * 3),
-            newHabitTitleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: HabitVCConstants.leadingMargin),
+            HabitTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: HabitVCConstants.topMargin * 3),
+            HabitTitleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: HabitVCConstants.leadingMargin),
 
-            newHabitTitleTF.topAnchor.constraint(equalTo: newHabitTitleLabel.bottomAnchor, constant: HabitVCConstants.topMargin),
-            newHabitTitleTF.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: HabitVCConstants.leadingMargin),
-            newHabitTitleTF.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: HabitVCConstants.trailingMargin),
+            HabitTitleTF.topAnchor.constraint(equalTo: HabitTitleLabel.bottomAnchor, constant: HabitVCConstants.topMargin),
+            HabitTitleTF.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: HabitVCConstants.leadingMargin),
+            HabitTitleTF.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: HabitVCConstants.trailingMargin),
 
-            newHabitColorLabel.topAnchor.constraint(equalTo: newHabitTitleTF.bottomAnchor, constant: (HabitVCConstants.topMargin * 2) - 1),
-            newHabitColorLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: HabitVCConstants.leadingMargin),
+            HabitColorLabel.topAnchor.constraint(equalTo: HabitTitleTF.bottomAnchor, constant: (HabitVCConstants.topMargin * 2) - 1),
+            HabitColorLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: HabitVCConstants.leadingMargin),
 
-            newHabitColor.topAnchor.constraint(equalTo: newHabitColorLabel.bottomAnchor, constant: HabitVCConstants.topMargin),
-            newHabitColor.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: HabitVCConstants.leadingMargin),
+            HabitColor.topAnchor.constraint(equalTo: HabitColorLabel.bottomAnchor, constant: HabitVCConstants.topMargin),
+            HabitColor.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: HabitVCConstants.leadingMargin),
 
-            newHabitTimeTitleLable.topAnchor.constraint(equalTo: newHabitColor.bottomAnchor, constant: HabitVCConstants.topMargin),
-            newHabitTimeTitleLable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: HabitVCConstants.leadingMargin),
+            HabitTimeTitleLable.topAnchor.constraint(equalTo: HabitColor.bottomAnchor, constant: HabitVCConstants.topMargin),
+            HabitTimeTitleLable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: HabitVCConstants.leadingMargin),
 
-            newHabitTimeLabel.topAnchor.constraint(equalTo: newHabitTimeTitleLable.bottomAnchor, constant: HabitVCConstants.topMargin),
-            newHabitTimeLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: HabitVCConstants.leadingMargin),
+            HabitTimeLabel.topAnchor.constraint(equalTo: HabitTimeTitleLable.bottomAnchor, constant: HabitVCConstants.topMargin),
+            HabitTimeLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: HabitVCConstants.leadingMargin),
 
-            newHabitDatePicker.topAnchor.constraint(equalTo: newHabitTimeLabel.bottomAnchor, constant: (HabitVCConstants.topMargin * 2) - 1),
-            newHabitDatePicker.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            newHabitDatePicker.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            HabitDatePicker.topAnchor.constraint(equalTo: HabitTimeLabel.bottomAnchor, constant: (HabitVCConstants.topMargin * 2) - 1),
+            HabitDatePicker.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            HabitDatePicker.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
         ])
     }
 }

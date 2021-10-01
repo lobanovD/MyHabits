@@ -38,6 +38,7 @@ class HabitDetailsViewController: UIViewController {
         let habitActivityTable = UITableView()
         habitActivityTable.toAutoLayout()
         habitActivityTable.backgroundColor = ColorStyles.lightGray
+        habitActivityTable.separatorStyle = .singleLine
         return habitActivityTable
     }()
     
@@ -86,13 +87,15 @@ extension HabitDetailsViewController: UITableViewDelegate, UITableViewDataSource
             cell.accessoryView = habitCheckMarkImageView
             cell.accessoryView?.frame = HabitDetailsVCConstant.checkImageFrame
         }
+        cell.layoutMargins = UIEdgeInsets.zero
+        cell.preservesSuperviewLayoutMargins = false
         return cell
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return HabitDetailsVCConstant.titleForHeaderInSection
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         habitActivityTable.deselectRow(at: indexPath, animated: true)
     }

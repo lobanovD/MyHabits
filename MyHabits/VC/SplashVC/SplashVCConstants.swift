@@ -11,4 +11,5 @@ struct SplashVCConstants {
     static let imageWidth: CGFloat = 120
     static let imageHeight: CGFloat = 120
     static let titleBottomMargin: CGFloat = -42
+    static let splashTitle:String = "MyHabits"
 }

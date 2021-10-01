@@ -20,9 +20,6 @@ class HabitDetailsViewController: UIViewController {
         habitActivityTable.delegate = self
         habitActivityTable.dataSource = self
         habitActivityTable.register(HabitDetailsViewCell.self, forCellReuseIdentifier: HabitDetailsViewCell.id)
-        
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,15 +30,7 @@ class HabitDetailsViewController: UIViewController {
         navigationController?.navigationItem.largeTitleDisplayMode = .never
         createRightNavigationBarItem()
         self.habitActivityTable.reloadData()
-
-
-        
-
-
-        
-        
     }
-
     
     // MARK: - UI elements
     
@@ -59,7 +48,6 @@ class HabitDetailsViewController: UIViewController {
         return habitCheckMarkImageView
     }()
 }
-
 
 // MARK: - Actions
 extension HabitDetailsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -109,7 +97,6 @@ extension HabitDetailsViewController: UITableViewDelegate, UITableViewDataSource
         habitActivityTable.deselectRow(at: indexPath, animated: true)
     }
     
-    
     func createRightNavigationBarItem() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: HabitDetailsVCConstant.rightBarItemTitle, style: .done, target: self, action: #selector(rightButtonAction))
         let saveButtonAttributes = [
@@ -120,17 +107,16 @@ extension HabitDetailsViewController: UITableViewDelegate, UITableViewDataSource
         self.navigationItem.rightBarButtonItem!.setTitleTextAttributes(saveButtonAttributes, for: .highlighted)
     }
     
-    
     @objc func rightButtonAction(sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: HabitsVCConstant.storyboardName, bundle: nil)
         let habitVC = storyboard.instantiateViewController(withIdentifier: HabitViewController.id) as! HabitViewController
         habitVC.habitIndex = self.habitIndex
         let transition = CATransition()
-            transition.duration = 0.3
+        transition.duration = 0.3
         transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         transition.type = CATransitionType.moveIn
         transition.subtype = CATransitionSubtype.fromTop
-            navigationController?.view.layer.add(transition, forKey: nil)
-            navigationController?.pushViewController(habitVC, animated: false)
+        navigationController?.view.layer.add(transition, forKey: nil)
+        navigationController?.pushViewController(habitVC, animated: false)
     }
 }

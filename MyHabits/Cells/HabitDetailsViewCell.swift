@@ -8,9 +8,9 @@
 import UIKit
 
 class HabitDetailsViewCell: UITableViewCell {
-
-        static let id = "HabitTableViewCell"
-
+    
+    static let id = "HabitTableViewCell"
+    
     override func prepareForReuse() {
         super.prepareForReuse()
     }

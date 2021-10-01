@@ -11,7 +11,6 @@ class SplashScreen: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.backgroundColor = .white
         view.addSubviews(splashTitle)
         setupConstraints()
         
@@ -26,7 +25,7 @@ class SplashScreen: UIViewController {
     
     private lazy var splashTitle: UILabel = {
         let splashTitle = UILabel()
-        splashTitle.text = "MyHabits"
+        splashTitle.text = SplashVCConstants.splashTitle
         splashTitle.textTitle3(width: view.frame.width)
         splashTitle.textColor = ColorStyles.purple
         return splashTitle
@@ -39,5 +38,3 @@ class SplashScreen: UIViewController {
         ])
     }
 }
-
-

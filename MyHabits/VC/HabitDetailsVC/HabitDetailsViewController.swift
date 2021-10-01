@@ -26,16 +26,22 @@ class HabitDetailsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        var tempHabitArray = HabitsStore.shared.habits
-        tempHabitArray.sort(by: {stripTime(from: $0.date) < stripTime(from: $1.date)})
-        title = tempHabitArray[habitIndex].name
+        var sortHabitArray = HabitsStore.shared.habits
+        sortHabitArray.sort(by: {stripTime(from: $0.date) < stripTime(from: $1.date)})
+        title = sortHabitArray[habitIndex].name
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.navigationItem.largeTitleDisplayMode = .never
         createRightNavigationBarItem()
         self.habitActivityTable.reloadData()
+
+
+        
+
+
         
         
     }
+
     
     // MARK: - UI elements
     
@@ -86,7 +92,9 @@ extension HabitDetailsViewController: UITableViewDelegate, UITableViewDataSource
         
         let dateArray : [Date] = Array(HabitsStore.shared.dates.reversed())
         cell.textLabel?.text = dateFormatter.string(from: dateArray[indexPath.row])
-        if HabitsStore.shared.habit(HabitsStore.shared.habits[habitIndex], isTrackedIn: dateArray[indexPath.row]) {
+        var sortHabitArray = HabitsStore.shared.habits
+        sortHabitArray.sort(by: {stripTime(from: $0.date) < stripTime(from: $1.date)})
+        if HabitsStore.shared.habit(sortHabitArray[habitIndex], isTrackedIn: dateArray[indexPath.row]) {
             cell.accessoryView = habitCheckMarkImageView
             cell.accessoryView?.frame = HabitDetailsVCConstant.checkImageFrame
         }
@@ -103,7 +111,7 @@ extension HabitDetailsViewController: UITableViewDelegate, UITableViewDataSource
     
     
     func createRightNavigationBarItem() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Править", style: .done, target: self, action: #selector(rightButtonAction))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: HabitDetailsVCConstant.rightBarItemTitle, style: .done, target: self, action: #selector(rightButtonAction))
         let saveButtonAttributes = [
             NSAttributedString.Key.font: UIFont(name: "SFProText-Regular", size: 17)!,
             NSAttributedString.Key.foregroundColor: ColorStyles.purple,
@@ -115,12 +123,14 @@ extension HabitDetailsViewController: UITableViewDelegate, UITableViewDataSource
     
     @objc func rightButtonAction(sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: HabitsVCConstant.storyboardName, bundle: nil)
-        let newHabitVC = storyboard.instantiateViewController(withIdentifier: HabitViewController.id) as! HabitViewController
-        let navController = UINavigationController(rootViewController: newHabitVC)
-        navController.modalTransitionStyle = .coverVertical
-        navController.modalPresentationStyle = .fullScreen
-        newHabitVC.habitIndex = self.habitIndex
-        
-        self.navigationController?.present(navController, animated: true, completion: nil)
+        let habitVC = storyboard.instantiateViewController(withIdentifier: HabitViewController.id) as! HabitViewController
+        habitVC.habitIndex = self.habitIndex
+        let transition = CATransition()
+            transition.duration = 0.3
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.moveIn
+        transition.subtype = CATransitionSubtype.fromTop
+            navigationController?.view.layer.add(transition, forKey: nil)
+            navigationController?.pushViewController(habitVC, animated: false)
     }
 }

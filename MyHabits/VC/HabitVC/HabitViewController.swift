@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HabitViewController: UIViewController {
+class HabitViewController: UIViewController, UITextFieldDelegate {
 
     static let id = "HabitViewController"
 
@@ -15,12 +15,14 @@ class HabitViewController: UIViewController {
 
     var habitColor: UIColor = ColorStyles.orange
 
-
     let currentDateTime = Date()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Создать"
+        HabitTitleTF.delegate = self
+        hideKeyboard()
 
     }
 
@@ -33,8 +35,11 @@ class HabitViewController: UIViewController {
                          HabitColor,
                          HabitTimeTitleLable,
                          HabitTimeLabel,
-                         HabitDatePicker)
+                         HabitDatePicker,
+                         habitDeleteButton)
         setupConstraints()
+        navigationController?.navigationBar.prefersLargeTitles = false
+
 
     }
 
@@ -55,11 +60,12 @@ class HabitViewController: UIViewController {
         HabitTitleTF.autocorrectionType = .no
 
         if habitIndex != nil {
-            HabitTitleTF.text = HabitsStore.shared.habits[habitIndex!].name
-            habitColor = HabitsStore.shared.habits[habitIndex!].color
+            var sortHabitArray = HabitsStore.shared.habits
+            sortHabitArray.sort(by: {stripTime(from: $0.date) < stripTime(from: $1.date)})
+            HabitTitleTF.text = sortHabitArray[habitIndex!].name
+            habitColor = sortHabitArray[habitIndex!].color
         }
         HabitTitleTF.textColor = habitColor
-        HabitTitleTF.becomeFirstResponder()
         return HabitTitleTF
     }()
 
@@ -74,7 +80,9 @@ class HabitViewController: UIViewController {
         let HabitColor = UIView()
         HabitColor.toAutoLayout()
         if habitIndex != nil {
-            habitColor = HabitsStore.shared.habits[habitIndex!].color
+            var sortHabitArray = HabitsStore.shared.habits
+            sortHabitArray.sort(by: {stripTime(from: $0.date) < stripTime(from: $1.date)})
+            habitColor = sortHabitArray[habitIndex!].color
         }
         HabitColor.backgroundColor = habitColor
         HabitColor.colorCircle(width: view.frame.width)
@@ -82,7 +90,6 @@ class HabitViewController: UIViewController {
         HabitColor.addGestureRecognizer(gesture)
         return HabitColor
     }()
-
 
     private lazy var HabitTimeTitleLable: UILabel = {
         let HabitTimeTitleLable = UILabel()
@@ -102,7 +109,9 @@ class HabitViewController: UIViewController {
         HabitDatePicker.toAutoLayout()
         HabitDatePicker.datePickerMode = .time
         if habitIndex != nil {
-            HabitDatePicker.date = HabitsStore.shared.habits[habitIndex!].date
+            var sortHabitArray = HabitsStore.shared.habits
+            sortHabitArray.sort(by: {stripTime(from: $0.date) < stripTime(from: $1.date)})
+            HabitDatePicker.date = sortHabitArray[habitIndex!].date
         } else {
             HabitDatePicker.date = currentDateTime
         }
@@ -131,6 +140,21 @@ class HabitViewController: UIViewController {
             HabitDatePicker.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
         }
         return HabitDatePicker
+    }()
+
+    private lazy var habitDeleteButton: UIButton = {
+        let habitDeleteButton = UIButton()
+        habitDeleteButton.toAutoLayout()
+        habitDeleteButton.setTitle("Удалить привычку", for: .normal)
+        habitDeleteButton.setTitleColor(.red, for: .normal)
+        habitDeleteButton.titleLabel?.font = UIFont(name: "SFProText-Regular", size: 17)
+        if habitIndex != nil {
+            habitDeleteButton.isHidden = false
+        } else {
+            habitDeleteButton.isHidden = true
+        }
+        habitDeleteButton.addTarget(self, action: #selector(habitDelete), for: .touchUpInside)
+        return habitDeleteButton
     }()
 }
 
@@ -170,16 +194,28 @@ extension HabitViewController: UIColorPickerViewControllerDelegate {
         navigationItem.rightBarButtonItem = saveButton
     }
 
+     private func closeVC() {
+        let transition = CATransition()
+           transition.duration = 0.3
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.reveal
+        transition.subtype = CATransitionSubtype.fromBottom
+           navigationController?.view.layer.add(transition, forKey: nil)
+           _ = navigationController?.popViewController(animated: false)
+    }
+
     @objc func cancelButton() {
-        navigationController?.dismiss(animated: true, completion: nil)
+        closeVC()
     }
 
     @objc func saveButton() {
-        navigationController?.dismiss(animated: true, completion: nil)
+        closeVC()
         if habitIndex != nil {
-            HabitsStore.shared.habits[habitIndex!].name = HabitTitleTF.text ?? ""
-            HabitsStore.shared.habits[habitIndex!].color = habitColor
-            HabitsStore.shared.habits[habitIndex!].date = HabitDatePicker.date
+            var sortHabitArray = HabitsStore.shared.habits
+            sortHabitArray.sort(by: {stripTime(from: $0.date) < stripTime(from: $1.date)})
+            sortHabitArray[habitIndex!].name = HabitTitleTF.text ?? ""
+            sortHabitArray[habitIndex!].color = habitColor
+            sortHabitArray[habitIndex!].date = HabitDatePicker.date
         } else {
             let Habit = Habit(name: HabitTitleTF.text ?? "", date: HabitDatePicker.date, color: habitColor)
             HabitsStore.shared.habits.append(Habit)
@@ -202,6 +238,21 @@ extension HabitViewController: UIColorPickerViewControllerDelegate {
         HabitTitleTF.textColor = habitColor
     }
 
+    @objc func habitDelete() {
+        var sortHabitArray = HabitsStore.shared.habits
+        sortHabitArray.sort(by: {stripTime(from: $0.date) < stripTime(from: $1.date)})
+        let deleteAlert = UIAlertController(title: "Удалить привычку", message: "Вы хотите удалить привычку \(sortHabitArray[habitIndex!].name)?", preferredStyle: .alert)
+        deleteAlert.addAction(UIAlertAction(title: NSLocalizedString("Отмена", comment: ""), style: .cancel, handler: nil))
+        deleteAlert.addAction(UIAlertAction(title: "Удалить", style: .destructive, handler: { [self] _ in
+            let habitIndexForDelete = HabitsStore.shared.habits.firstIndex(of: sortHabitArray[self.habitIndex!])
+            if let index = habitIndexForDelete {
+                HabitsStore.shared.habits.remove(at: index)
+                sortHabitArray.remove(at: self.habitIndex!)
+                navigationController?.popToRootViewController(animated: true)
+            }
+        }))
+        self.present(deleteAlert, animated: true, completion: nil)
+    }
 
     @objc func HabitDatePickerSet() {
         let dateFormatter = DateFormatter()
@@ -244,6 +295,27 @@ extension HabitViewController: UIColorPickerViewControllerDelegate {
             HabitDatePicker.topAnchor.constraint(equalTo: HabitTimeLabel.bottomAnchor, constant: (HabitVCConstants.topMargin * 2) - 1),
             HabitDatePicker.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             HabitDatePicker.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+
+            habitDeleteButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: HabitVCConstants.bottomMargin),
+            habitDeleteButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    func hideKeyboard()
+        {
+            let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+                target: self,
+                action: #selector(dismissKeyboard))
+
+            view.addGestureRecognizer(tap)
+        }
+
+        @objc func dismissKeyboard()
+        {
+            view.endEditing(true)
+        }
 }

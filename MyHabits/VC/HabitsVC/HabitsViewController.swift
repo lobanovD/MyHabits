@@ -9,16 +9,20 @@ import UIKit
 
 class HabitsViewController: UIViewController {
 
+    static let id = "HabitsViewController"
+
     @IBOutlet weak var addNewHabitButton: UIBarButtonItem!
 
     @IBAction func addNewHabitAction(_ sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: HabitsVCConstant.storyboardName, bundle: nil)
         let newHabitVC = storyboard.instantiateViewController(withIdentifier: HabitViewController.id) as! HabitViewController
-        let navController = UINavigationController(rootViewController: newHabitVC)
-        navController.modalTransitionStyle = .coverVertical
-        navController.modalPresentationStyle = .fullScreen
-
-        self.navigationController?.present(navController, animated: true, completion: nil)
+        let transition = CATransition()
+            transition.duration = 0.3
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.moveIn
+        transition.subtype = CATransitionSubtype.fromTop
+            navigationController?.view.layer.add(transition, forKey: nil)
+            navigationController?.pushViewController(newHabitVC, animated: false)
     }
 
     override func viewDidLoad() {
@@ -27,7 +31,7 @@ class HabitsViewController: UIViewController {
         habitCollectionView.dataSource = self
         habitCollectionView.delegate = self
         setupConstraints()
-        self.tabBarController?.viewControllers?[0].tabBarItem.title = NSLocalizedString("Привычки", comment: "")
+        correctTabBarTitle()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -52,6 +56,7 @@ class HabitsViewController: UIViewController {
         title = ""
         correctTabBarTitle()
     }
+
     override func viewDidDisappear(_ animated: Bool) {
         title = HabitsVCConstant.title
         correctTabBarTitle()
@@ -71,7 +76,6 @@ class HabitsViewController: UIViewController {
 
     private lazy var habitCollectionView: UICollectionView = {
         let habitCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
-
         habitCollectionView.register(HabitCollectionViewCell.self, forCellWithReuseIdentifier: HabitCollectionViewCell.id)
         habitCollectionView.register(ProgressCollectionViewCell.self, forCellWithReuseIdentifier: ProgressCollectionViewCell.id)
         habitCollectionView.toAutoLayout()
@@ -109,16 +113,16 @@ extension HabitsViewController: UICollectionViewDataSource, UICollectionViewDele
 
         if indexPath.section == 1 {
             let cell = habitCollectionView.dequeueReusableCell(withReuseIdentifier: HabitCollectionViewCell.id, for: indexPath) as! HabitCollectionViewCell
-            var tempHabitArray = HabitsStore.shared.habits
-            tempHabitArray.sort(by: {stripTime(from: $0.date) < stripTime(from: $1.date)})
-            cell.configureCell(habit: tempHabitArray[indexPath.item])
+            var sortHabitArray = HabitsStore.shared.habits
+            sortHabitArray.sort(by: {stripTime(from: $0.date) < stripTime(from: $1.date)})
+            cell.configureCell(habit: sortHabitArray[indexPath.item])
 
             cell.habitTrackCircleAction = { [weak self] in
-                if tempHabitArray[indexPath.item].isAlreadyTakenToday {
+                if sortHabitArray[indexPath.item].isAlreadyTakenToday {
                     return
                 }
                 else {
-                    let habit = tempHabitArray[indexPath.item]
+                    let habit = sortHabitArray[indexPath.item]
                     HabitsStore.shared.track(habit)
                 }
                 self?.habitCollectionView.reloadData()
@@ -130,15 +134,11 @@ extension HabitsViewController: UICollectionViewDataSource, UICollectionViewDele
             cell.updateProgress()
             return cell
         }
-
-
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return HabitsVCConstant.numberOfSections
     }
-
-
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 1 {
@@ -199,10 +199,8 @@ extension HabitsViewController: UICollectionViewDataSource, UICollectionViewDele
             let storyboard = UIStoryboard(name: HabitsVCConstant.storyboardName, bundle: nil)
             guard let habitDetailsVC = storyboard.instantiateViewController(identifier: HabitDetailsViewController.id) as? HabitDetailsViewController else { return }
             habitDetailsVC.habitIndex = indexPath.item
-
             habitDetailsVC.modalTransitionStyle = .coverVertical
             habitDetailsVC.modalPresentationStyle = .fullScreen
-
             self.navigationController?.pushViewController(habitDetailsVC, animated: true)
         }
     }

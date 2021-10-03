@@ -58,7 +58,7 @@ extension HabitDetailsViewController: UITableViewDelegate, UITableViewDataSource
             habitActivityTable.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             habitActivityTable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             habitActivityTable.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            habitActivityTable.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            habitActivityTable.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
     }
     
@@ -84,8 +84,9 @@ extension HabitDetailsViewController: UITableViewDelegate, UITableViewDataSource
         var sortHabitArray = HabitsStore.shared.habits
         sortHabitArray.sort(by: {stripTime(from: $0.date) < stripTime(from: $1.date)})
         if HabitsStore.shared.habit(sortHabitArray[habitIndex], isTrackedIn: dateArray[indexPath.row]) {
-            cell.accessoryView = habitCheckMarkImageView
-            cell.accessoryView?.frame = HabitDetailsVCConstant.checkImageFrame
+            cell.contentView.addSubview(habitCheckMarkImageView)
+            habitCheckMarkImageView.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -17).isActive = true
+            habitCheckMarkImageView.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor).isActive = true
         }
         cell.layoutMargins = UIEdgeInsets.zero
         cell.preservesSuperviewLayoutMargins = false

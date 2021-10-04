@@ -41,13 +41,6 @@ class HabitDetailsViewController: UIViewController {
         habitActivityTable.separatorStyle = .singleLine
         return habitActivityTable
     }()
-    
-    private lazy var habitCheckMarkImageView: UIImageView = {
-        let habitCheckMarkImageView = UIImageView(image: UIImage.init(systemName: "checkmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 17, weight: .bold)))
-        habitCheckMarkImageView.tintColor = ColorStyles.purple
-        habitCheckMarkImageView.toAutoLayout()
-        return habitCheckMarkImageView
-    }()
 }
 
 // MARK: - Actions
@@ -78,18 +71,15 @@ extension HabitDetailsViewController: UITableViewDelegate, UITableViewDataSource
             withIdentifier: HabitDetailsViewCell.id,
             for: indexPath
         ) as! HabitDetailsViewCell
+
         
         let dateArray : [Date] = Array(HabitsStore.shared.dates.reversed())
         cell.textLabel?.text = dateFormatter.string(from: dateArray[indexPath.row])
         var sortHabitArray = HabitsStore.shared.habits
         sortHabitArray.sort(by: {stripTime(from: $0.date) < stripTime(from: $1.date)})
-        if HabitsStore.shared.habit(sortHabitArray[habitIndex], isTrackedIn: dateArray[indexPath.row]) {
-            cell.contentView.addSubview(habitCheckMarkImageView)
-            habitCheckMarkImageView.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -17).isActive = true
-            habitCheckMarkImageView.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor).isActive = true
+        if HabitsStore.shared.habit(sortHabitArray[habitIndex], isTrackedIn: dateArray[indexPath.item]) {
+            cell.accessoryType = .checkmark
         }
-        cell.layoutMargins = UIEdgeInsets.zero
-        cell.preservesSuperviewLayoutMargins = false
         return cell
     }
     

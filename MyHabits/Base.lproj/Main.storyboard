@@ -61,34 +61,6 @@
             </objects>
             <point key="canvasLocation" x="2489.8550724637685" y="591.96428571428567"/>
         </scene>
-        <!--Habit Details View Controller-->
-        <scene sceneID="6ew-kt-iTv">
-            <objects>
-                <tableViewController storyboardIdentifier="HabitDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YeA-0A-sgv" customClass="HabitDetailsViewController" customModule="MyHabits" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="dHH-Vq-kzp">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="kLs-AU-n6L">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kLs-AU-n6L" id="NL4-DV-zsq">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="YeA-0A-sgv" id="fd6-YR-JqV"/>
-                            <outlet property="delegate" destination="YeA-0A-sgv" id="ofG-3F-9Zd"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jsi-36-ipL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2996" y="-222"/>
-        </scene>
         <!--Создать-->
         <scene sceneID="QQq-A6-CQr">
             <objects>
@@ -130,6 +102,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lek-S5-tbx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1580" y="-222"/>
+        </scene>
+        <!--Habit Details View Controller-->
+        <scene sceneID="2J0-1U-ehL">
+            <objects>
+                <viewController storyboardIdentifier="HabitDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="czi-Py-lam" customClass="HabitDetailsViewController" customModule="MyHabits" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CGA-rK-TTj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="n7E-rY-2u8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KDc-Ii-NZz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2387" y="-222"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Qqp-mt-kMH">

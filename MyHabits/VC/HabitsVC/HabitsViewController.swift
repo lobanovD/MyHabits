@@ -56,11 +56,6 @@ class HabitsViewController: UIViewController {
         title = "Сегодня"
         self.tabBarController?.viewControllers?[0].tabBarItem.title = NSLocalizedString("Привычки", comment: "")
     }
-//    override func awakeFromNib() {
-//    self.tabBarItem.title = "title"
-//}
-
-
 
     // MARK: - UI elements
 

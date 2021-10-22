@@ -7,23 +7,63 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28020FE82706601900432EDE /* HabitDetailsVCConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28020FE72706601900432EDE /* HabitDetailsVCConstant.swift */; };
+		28020FEA2706612F00432EDE /* HabitsVCConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28020FE92706612F00432EDE /* HabitsVCConstant.swift */; };
+		28053D9426FBE26D006E8A5F /* HabitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28053D9326FBE26D006E8A5F /* HabitCollectionViewCell.swift */; };
+		28053D9827011ABC006E8A5F /* ProgressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28053D9727011ABB006E8A5F /* ProgressCollectionViewCell.swift */; };
+		284AF5E826F7D5CC002AC041 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 284AF5E726F7D5CC002AC041 /* SF-Pro-Text-Regular.otf */; };
+		284AF5EA26F7D86F002AC041 /* HabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284AF5E926F7D86F002AC041 /* HabitViewController.swift */; };
+		284AF5EC26F9232A002AC041 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 284AF5EB26F92329002AC041 /* SF-Pro-Text-Semibold.otf */; };
+		284AF5EE26F934B1002AC041 /* HabitVCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284AF5ED26F934B1002AC041 /* HabitVCConstants.swift */; };
+		284C543B270218DD005A466F /* HabitDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284C543A270218DD005A466F /* HabitDetailsViewController.swift */; };
+		284C543E27026F90005A466F /* CellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284C543D27026F90005A466F /* CellConstants.swift */; };
+		284C5445270D0BFB005A466F /* HabitDetailsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284C5444270D0BFB005A466F /* HabitDetailsViewCell.swift */; };
 		28C09CD526F2BC3500062B83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C09CD426F2BC3500062B83 /* AppDelegate.swift */; };
 		28C09CD726F2BC3500062B83 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C09CD626F2BC3500062B83 /* SceneDelegate.swift */; };
-		28C09CD926F2BC3500062B83 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C09CD826F2BC3500062B83 /* ViewController.swift */; };
 		28C09CDC26F2BC3500062B83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28C09CDA26F2BC3500062B83 /* Main.storyboard */; };
 		28C09CDE26F2BC3D00062B83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28C09CDD26F2BC3D00062B83 /* Assets.xcassets */; };
-		28C09CE126F2BC3D00062B83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28C09CDF26F2BC3D00062B83 /* LaunchScreen.storyboard */; };
+		28C09CE926F2BE6400062B83 /* HabitsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C09CE826F2BE6400062B83 /* HabitsStore.swift */; };
+		28C09CEB26F3459200062B83 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C09CEA26F3459200062B83 /* SplashScreen.swift */; };
+		28C09CED26F3470E00062B83 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C09CEC26F3470E00062B83 /* Extensions.swift */; };
+		28C09CF326F34DE100062B83 /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 28C09CF226F34DE100062B83 /* SF-Pro-Display-Semibold.otf */; };
+		28C09CFC26F37ED400062B83 /* ColorStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C09CFB26F37ED400062B83 /* ColorStyles.swift */; };
+		28C09CFE26F382BB00062B83 /* TextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C09CFD26F382BB00062B83 /* TextStyles.swift */; };
+		28C09D0326F3930E00062B83 /* HabitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C09D0226F3930E00062B83 /* HabitsViewController.swift */; };
+		28C09D0526F3938F00062B83 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C09D0426F3938F00062B83 /* InfoViewController.swift */; };
+		28C09D0926F4BB2D00062B83 /* TempHabits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C09D0826F4BB2D00062B83 /* TempHabits.swift */; };
+		28E588C226F553AB003CD78F /* SplashVCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E588C126F553AB003CD78F /* SplashVCConstants.swift */; };
+		28E588C426F553B8003CD78F /* InfoVCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E588C326F553B8003CD78F /* InfoVCConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		28020FE72706601900432EDE /* HabitDetailsVCConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailsVCConstant.swift; sourceTree = "<group>"; };
+		28020FE92706612F00432EDE /* HabitsVCConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsVCConstant.swift; sourceTree = "<group>"; };
+		28053D9326FBE26D006E8A5F /* HabitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCollectionViewCell.swift; sourceTree = "<group>"; };
+		28053D9727011ABB006E8A5F /* ProgressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCollectionViewCell.swift; sourceTree = "<group>"; };
+		284AF5E726F7D5CC002AC041 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
+		284AF5E926F7D86F002AC041 /* HabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewController.swift; sourceTree = "<group>"; };
+		284AF5EB26F92329002AC041 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
+		284AF5ED26F934B1002AC041 /* HabitVCConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitVCConstants.swift; sourceTree = "<group>"; };
+		284C543A270218DD005A466F /* HabitDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailsViewController.swift; sourceTree = "<group>"; };
+		284C543D27026F90005A466F /* CellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConstants.swift; sourceTree = "<group>"; };
+		284C5444270D0BFB005A466F /* HabitDetailsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailsViewCell.swift; sourceTree = "<group>"; };
 		28C09CD126F2BC3500062B83 /* MyHabits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyHabits.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28C09CD426F2BC3500062B83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28C09CD626F2BC3500062B83 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		28C09CD826F2BC3500062B83 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		28C09CDB26F2BC3500062B83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		28C09CDD26F2BC3D00062B83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		28C09CE026F2BC3D00062B83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		28C09CE226F2BC3D00062B83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		28C09CE826F2BE6400062B83 /* HabitsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsStore.swift; sourceTree = "<group>"; };
+		28C09CEA26F3459200062B83 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		28C09CEC26F3470E00062B83 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		28C09CF226F34DE100062B83 /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
+		28C09CFB26F37ED400062B83 /* ColorStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorStyles.swift; sourceTree = "<group>"; };
+		28C09CFD26F382BB00062B83 /* TextStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyles.swift; sourceTree = "<group>"; };
+		28C09D0226F3930E00062B83 /* HabitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewController.swift; sourceTree = "<group>"; };
+		28C09D0426F3938F00062B83 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		28C09D0826F4BB2D00062B83 /* TempHabits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempHabits.swift; sourceTree = "<group>"; };
+		28E588C126F553AB003CD78F /* SplashVCConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVCConstants.swift; sourceTree = "<group>"; };
+		28E588C326F553B8003CD78F /* InfoVCConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoVCConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +77,62 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		28053D9526FFE0EF006E8A5F /* InfoVC */ = {
+			isa = PBXGroup;
+			children = (
+				28C09D0426F3938F00062B83 /* InfoViewController.swift */,
+				28E588C326F553B8003CD78F /* InfoVCConstants.swift */,
+			);
+			path = InfoVC;
+			sourceTree = "<group>";
+		};
+		28053D9626FFE10C006E8A5F /* SplashVC */ = {
+			isa = PBXGroup;
+			children = (
+				28C09CEA26F3459200062B83 /* SplashScreen.swift */,
+				28E588C126F553AB003CD78F /* SplashVCConstants.swift */,
+			);
+			path = SplashVC;
+			sourceTree = "<group>";
+		};
+		284C543C270218F2005A466F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				28053D9326FBE26D006E8A5F /* HabitCollectionViewCell.swift */,
+				28053D9727011ABB006E8A5F /* ProgressCollectionViewCell.swift */,
+				284C5444270D0BFB005A466F /* HabitDetailsViewCell.swift */,
+				284C543D27026F90005A466F /* CellConstants.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		284C543F270274BF005A466F /* HabitsVC */ = {
+			isa = PBXGroup;
+			children = (
+				28C09D0226F3930E00062B83 /* HabitsViewController.swift */,
+				28020FE92706612F00432EDE /* HabitsVCConstant.swift */,
+			);
+			path = HabitsVC;
+			sourceTree = "<group>";
+		};
+		284C54422702761F005A466F /* HabitVC */ = {
+			isa = PBXGroup;
+			children = (
+				284AF5E926F7D86F002AC041 /* HabitViewController.swift */,
+				284AF5ED26F934B1002AC041 /* HabitVCConstants.swift */,
+			);
+			path = HabitVC;
+			sourceTree = "<group>";
+		};
+		284C54432702762D005A466F /* HabitDetailsVC */ = {
+			isa = PBXGroup;
+			children = (
+				284C543A270218DD005A466F /* HabitDetailsViewController.swift */,
+				28020FE72706601900432EDE /* HabitDetailsVCConstant.swift */,
+			);
+			path = HabitDetailsVC;
+			sourceTree = "<group>";
+		};
 		28C09CC826F2BC3500062B83 = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +152,51 @@
 		28C09CD326F2BC3500062B83 /* MyHabits */ = {
 			isa = PBXGroup;
 			children = (
-				28C09CD426F2BC3500062B83 /* AppDelegate.swift */,
-				28C09CD626F2BC3500062B83 /* SceneDelegate.swift */,
-				28C09CD826F2BC3500062B83 /* ViewController.swift */,
 				28C09CDA26F2BC3500062B83 /* Main.storyboard */,
-				28C09CDD26F2BC3D00062B83 /* Assets.xcassets */,
-				28C09CDF26F2BC3D00062B83 /* LaunchScreen.storyboard */,
+				28E588C626F55434003CD78F /* VC */,
+				284C543C270218F2005A466F /* Cells */,
+				28C09CFF26F38CBC00062B83 /* SupportFiles */,
 				28C09CE226F2BC3D00062B83 /* Info.plist */,
+				28C09D0826F4BB2D00062B83 /* TempHabits.swift */,
+				28C09CDD26F2BC3D00062B83 /* Assets.xcassets */,
 			);
 			path = MyHabits;
+			sourceTree = "<group>";
+		};
+		28C09CF026F34D8F00062B83 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				28C09CF226F34DE100062B83 /* SF-Pro-Display-Semibold.otf */,
+				284AF5E726F7D5CC002AC041 /* SF-Pro-Text-Regular.otf */,
+				284AF5EB26F92329002AC041 /* SF-Pro-Text-Semibold.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		28C09CFF26F38CBC00062B83 /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				28C09CF026F34D8F00062B83 /* Fonts */,
+				28C09CE826F2BE6400062B83 /* HabitsStore.swift */,
+				28C09CD426F2BC3500062B83 /* AppDelegate.swift */,
+				28C09CD626F2BC3500062B83 /* SceneDelegate.swift */,
+				28C09CEC26F3470E00062B83 /* Extensions.swift */,
+				28C09CFB26F37ED400062B83 /* ColorStyles.swift */,
+				28C09CFD26F382BB00062B83 /* TextStyles.swift */,
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		28E588C626F55434003CD78F /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				284C543F270274BF005A466F /* HabitsVC */,
+				284C54422702761F005A466F /* HabitVC */,
+				284C54432702762D005A466F /* HabitDetailsVC */,
+				28053D9526FFE0EF006E8A5F /* InfoVC */,
+				28053D9626FFE10C006E8A5F /* SplashVC */,
+			);
+			path = VC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,8 +256,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28C09CE126F2BC3D00062B83 /* LaunchScreen.storyboard in Resources */,
+				28C09CF326F34DE100062B83 /* SF-Pro-Display-Semibold.otf in Resources */,
 				28C09CDE26F2BC3D00062B83 /* Assets.xcassets in Resources */,
+				284AF5EC26F9232A002AC041 /* SF-Pro-Text-Semibold.otf in Resources */,
+				284AF5E826F7D5CC002AC041 /* SF-Pro-Text-Regular.otf in Resources */,
 				28C09CDC26F2BC3500062B83 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,9 +271,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28C09CD926F2BC3500062B83 /* ViewController.swift in Sources */,
+				28C09CE926F2BE6400062B83 /* HabitsStore.swift in Sources */,
+				28C09CFC26F37ED400062B83 /* ColorStyles.swift in Sources */,
+				284C543B270218DD005A466F /* HabitDetailsViewController.swift in Sources */,
+				28C09D0926F4BB2D00062B83 /* TempHabits.swift in Sources */,
+				284C5445270D0BFB005A466F /* HabitDetailsViewCell.swift in Sources */,
+				28E588C226F553AB003CD78F /* SplashVCConstants.swift in Sources */,
+				284C543E27026F90005A466F /* CellConstants.swift in Sources */,
+				284AF5EE26F934B1002AC041 /* HabitVCConstants.swift in Sources */,
+				28C09CED26F3470E00062B83 /* Extensions.swift in Sources */,
+				28C09CFE26F382BB00062B83 /* TextStyles.swift in Sources */,
+				28053D9426FBE26D006E8A5F /* HabitCollectionViewCell.swift in Sources */,
+				28C09D0526F3938F00062B83 /* InfoViewController.swift in Sources */,
+				28C09D0326F3930E00062B83 /* HabitsViewController.swift in Sources */,
 				28C09CD526F2BC3500062B83 /* AppDelegate.swift in Sources */,
 				28C09CD726F2BC3500062B83 /* SceneDelegate.swift in Sources */,
+				28020FEA2706612F00432EDE /* HabitsVCConstant.swift in Sources */,
+				28C09CEB26F3459200062B83 /* SplashScreen.swift in Sources */,
+				28020FE82706601900432EDE /* HabitDetailsVCConstant.swift in Sources */,
+				284AF5EA26F7D86F002AC041 /* HabitViewController.swift in Sources */,
+				28053D9827011ABC006E8A5F /* ProgressCollectionViewCell.swift in Sources */,
+				28E588C426F553B8003CD78F /* InfoVCConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,14 +304,6 @@
 				28C09CDB26F2BC3500062B83 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		28C09CDF26F2BC3D00062B83 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				28C09CE026F2BC3D00062B83 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -216,12 +360,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_ENABLE_BATCH_MODE = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -271,11 +416,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_ENABLE_BATCH_MODE = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
